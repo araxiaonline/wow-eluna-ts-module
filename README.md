@@ -15,6 +15,7 @@ This package is a heavily reworked version of the origina Eluna-TS package[Eluna
 * Added hot-reload option to eluna so locally running dev server will automatically reload Eluna on build changes.<br> --- __THIS FEATURE ONLY WORKS ON AZEROTH CORE DOCKER BUILDS__ (I am bias sincerely, the Mgt)
 
 ## Getting Started
+---
 Follow these instructions to create your first ets module. 
 
 __Dependencies__
@@ -25,7 +26,7 @@ __Dependencies__
 ```
 mkdir my-module
 cd my-module
-npm i eluna-ts-base
+npm i wow-eluna-ts-module
 ```
 ### Initialize envionrment
 You need some base environment variables to be able to transpile your first module. This command will create necessray files in your root directory to be able to build your first module.  I hate bloated boilerplates, so it gives you just the barebones to get something working. 
@@ -34,7 +35,11 @@ npx ets init
 ```
 * Creates a ets.env - environment variables (you really shouldn't need to changes thse for small builds)
 * Creates a tsconfig.json - Flavor how you like your environments to go, just make sure to leave references to types from the base project and TSTL parameters.  
-* Creates modules and hello - creates a base module directory for you with the patented "Hello World!" which is ever so useful in practice. 
+
+There is also an additional option to create the ever so useful "Hello World!" template module. 
+```
+npx ets init -x
+```
 
 ### Creating your module
 Modules by default are loaded from modules directory, *./modules*.  
@@ -73,6 +78,32 @@ This automatically communicates to your local world server and sends it the relo
 
 ** NOTE: 
 Live reload option is environment setup specific with many assumptions and I use docker version. If you are a native compile hippie, not gonna work for you, sorry. You will have to continue to trudge the 14 key strokes and complain about how hard you have it compared to the youth today. (Or if you want you could submit a PR wink..wink..nudge..nudge) 
+
+## Configuration 
+---
+After you run ets init it will create an *env.ets*  file the following options are set: 
+
+| Configuration | Description |
+| --- | --- |
+| ETS_BUILD_ROOT | The root directory of where new modules and common functions will be saved |
+| ETS_MODULE_DIR | Where individual modules will be transpiled to. |
+| ETS_COMMON_DIR | Where common functions will be transpiled when npx ets libs is run
+
+
+## ETS Client
+
+Commands to use the ETS client 
+
+---
+| Command | Description |
+| --- | --- |
+| `npx ets init` | Initializes new a project as a ets module with. <br>___Options:___<br> -x, --example : Creates Hello World example if modules directory is not created.  |
+| `npx ets libs` | Create shared functions that can be used with modules. Carry over from eluna-ts |
+| `npx ets build` | Transpiles the typescript modules into the build dir.  <br>___Options:___<br> -d, --luadir : Override the default root build directory <br> -m, --module : Override the name of the directory where build will transpiled modules to. <br> -w, --watch : Enable watch process to automatically build when TypeScrip code changes. <br> -l, -live-reload : Enables automatic eluna reloading if running a local docker build of Azeroth Core. 
+| `npx ets publish` | Submits module(s) to registry for download to other servers and for use in CI/CD (Not yet publicly implemented)
+
+
+
 
 ## Additional Notes 
 I linked the most important resources above. As this is OSS not everything that has a type actually works due to either a bug in Eluna or in the core itself.  

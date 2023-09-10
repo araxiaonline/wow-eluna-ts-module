@@ -147,8 +147,8 @@ function buildModules(luaDir, moduleDir, watch, liveReload) {
     const buildDest = path.join(callerDir, "tsconfig.json");
 
     // TSTL schema for module
-    const schemaSrc = path.join(__dirname, "../tsconfig.module.json");
-    const schemaDest = path.join(callerDir, "tsconfig.json");
+    const schemaSrc = path.join(__dirname, "../tstl.schema.json");
+    const schemaDest = path.join(callerDir, "tstl.schema.json");
 
     // Example module
     const example = path.join(__dirname, "../modules");
