@@ -26,3 +26,7 @@ node_modules/
 # Output of 'npm pack'
 *.tgz
 
+# files not needed
+examples
+old-modules
+
