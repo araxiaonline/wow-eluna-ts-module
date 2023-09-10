@@ -36,7 +36,6 @@
       "luaTarget": "5.2",
       "noHeader": true,
       "luaLibImport": "require",
-      "luaBundle": "./dist/module.lua",
       "luaBundleEntry": "./modules/index.ts"
     }
   }
