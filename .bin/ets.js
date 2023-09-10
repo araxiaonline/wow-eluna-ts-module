@@ -151,7 +151,7 @@ function buildModules(luaDir, moduleDir, watch, liveReload) {
     const schemaDest = path.join(callerDir, "tstl.schema.json");
 
     // Example module
-    const example = path.join(__dirname, "../modules");
+    example = path.join(__dirname, "../modules");
     const exampleDest = path.join(callerDir, "modules");
 
     if (fs.existsSync(sourceFile)) {
@@ -164,14 +164,14 @@ function buildModules(luaDir, moduleDir, watch, liveReload) {
     if(fs.existsSync(buildSrc)) {
       fs.copyFileSync(buildSrc, buildDest);
       log.success("default tsconfig.json file copied successfully.");
+
+      // update the output directory default
+      const jsonData = JSON.parse(fs.readFileSync(buildDest, 'utf8'));
+      const jsonString = JSON.stringify(jsonData, null, 2).replace(/\[\[module_output\]\]/g, './dist');
+      fs.writeFileSync(buildDest, jsonString, 'utf8');
     } else {
       log.error("tsconfig.json file does not exist in the package directory.");
     }
-
-    // update the output directory default
-    const jsonData = JSON.parse(fs.readFileSync(buildDest, 'utf8'));
-    const jsonString = JSON.stringify(jsonData, null, 2).replace(/\[\[module_output\]\]/g, './dist');
-    fs.writeFileSync(buildDest, jsonString, 'utf8');
 
     if(fs.existsSync(schemaSrc)) {
       fs.copyFileSync(schemaSrc, schemaDest);
@@ -196,7 +196,7 @@ function buildModules(luaDir, moduleDir, watch, liveReload) {
    * @returns 
    */
   function buildLibs(luaDir) {
-    const luaDir = luaDir || process.env.ETS_BUILD_ROOT || "./dist";
+    luaDir = luaDir || process.env.ETS_BUILD_ROOT || "./dist";
     const commonDir = process.env.ETS_COMMON_DIR || "common";
     if (!luaDir) {      
       log.error("ETS build root could not be determined. Review ets.env - ETS_BUILD_ROOT or pass as argument --luadir");              
