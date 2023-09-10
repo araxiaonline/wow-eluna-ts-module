@@ -1,10 +1,22 @@
 {
   "name": "wow-eluna-ts-module",
-  "version": "1.0.3",
-  "description": "Stripped down base repo for enabling custom WoW Eluna development using TypeScript",
-  "contributors": [
-    "ben-of-codecraft",
+  "version": "1.1.0",
+  "description": "Eluna-TS Module building package for mod-eluna for AzerothCore",
+  "author": "Volek @ben-of-codecraft",
+  "contributors": [  
     "Yehonal"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ben-of-codecraft/wow-eluna-ts-module"
+  },
+  "keywords": [
+    "eluna",
+    "typescript",
+    "lua",
+    "wow",
+    "world of warcraft",
+    "azerothcore"
   ],
   "license": "AGPL-3.0-or-later",
   "files": [
