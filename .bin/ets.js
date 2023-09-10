@@ -36,7 +36,7 @@ program
 
 program
   .command("init")
-  .option("-x, --example <example>", "Create example module files. (default: false)")
+  .option("-x, --example", "Create example module files. (default: false)")
   .description("Initialize the project building base libs and adding environment variables")
   .action(({example}) => {
     initProject(example);    
@@ -151,7 +151,7 @@ function buildModules(luaDir, moduleDir, watch, liveReload) {
     const schemaDest = path.join(callerDir, "tstl.schema.json");
 
     // Example module
-    example = path.join(__dirname, "../modules");
+    const exampleSrc = path.join(__dirname, "../modules");
     const exampleDest = path.join(callerDir, "modules");
 
     if (fs.existsSync(sourceFile)) {
@@ -167,7 +167,7 @@ function buildModules(luaDir, moduleDir, watch, liveReload) {
 
       // update the output directory default
       const jsonData = JSON.parse(fs.readFileSync(buildDest, 'utf8'));
-      const jsonString = JSON.stringify(jsonData, null, 2).replace(/\[\[module_output\]\]/g, './dist');
+      const jsonString = JSON.stringify(jsonData, null, 2).replace('[[module_output]]', './dist');
       fs.writeFileSync(buildDest, jsonString, 'utf8');
     } else {
       log.error("tsconfig.json file does not exist in the package directory.");
@@ -179,9 +179,9 @@ function buildModules(luaDir, moduleDir, watch, liveReload) {
     }
 
     // if an example is flagged then copy the example module
-    if(example) {
-      if(fs.existsSync(example) && !fs.existsSync(exampleDest)) {
-        fs.copySync(example, exampleDest);
+    if(example) {      
+      if(fs.existsSync(exampleSrc) && !fs.existsSync(exampleDest)) {
+        fs.copySync(exampleSrc, exampleDest);
         log.success("example module files copied successfully.");
       } else {
         log.error("Could not copy modules directory already exists.");
