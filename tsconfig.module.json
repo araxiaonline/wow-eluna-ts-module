@@ -17,7 +17,7 @@
       "typeRoots": [
         "./node_modules/eluna-ts-base/types",
         "./node_modules",
-        "./node_modules/@types",      
+        "./node_modules/@types"   
       ],
       "rootDir": "modules"
     },
@@ -30,7 +30,7 @@
       "test",
       "**/*spec.ts",
       "**/__tests__",
-      "**/__mocks__",
+      "**/__mocks__"
     ],
     "tstl": {
       "luaTarget": "5.2",
