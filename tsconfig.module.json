@@ -1,0 +1,42 @@
+{    
+    "$schema": "./tstl.schema.json",
+    "compilerOptions": {
+      "strict": true,
+      "target": "esnext",
+      "outDir": "[[module_output]]",
+      "skipLibCheck": true,
+      "lib": [
+        "esnext","DOM"
+      ],
+      "moduleResolution": "node",
+      "types": [
+        "lua-types/5.2",
+        "@typescript-to-lua/language-extensions",
+        "eluna-ts-base"                              
+      ],
+      "typeRoots": [
+        "./node_modules/eluna-ts-base/types",
+        "./node_modules",
+        "./node_modules/@types",      
+      ],
+      "rootDir": "modules"
+    },
+    "include": [
+      "modules/**/*.ts"
+    ],
+    "exclude": [
+      "node_modules",
+      "**/node_modules",
+      "test",
+      "**/*spec.ts",
+      "**/__tests__",
+      "**/__mocks__",
+    ],
+    "tstl": {
+      "luaTarget": "5.2",
+      "noHeader": true,
+      "luaLibImport": "require",
+      "luaBundle": "./dist/module.lua",
+      "luaBundleEntry": "./modules/index.ts"
+    }
+  }
