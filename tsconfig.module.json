@@ -12,10 +12,10 @@
       "types": [
         "lua-types/5.2",
         "@typescript-to-lua/language-extensions",
-        "eluna-ts-base"                              
+        "wow-eluna-ts-module"                              
       ],
       "typeRoots": [
-        "./node_modules/eluna-ts-base/types",
+        "./node_modules/wow-eluna-ts-module/types",
         "./node_modules",
         "./node_modules/@types"   
       ],
