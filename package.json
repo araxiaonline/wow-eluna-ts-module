@@ -1,9 +1,9 @@
 {
   "name": "wow-eluna-ts-module",
-  "version": "1.1.4",
+  "version": "1.2.0",
   "description": "Eluna-TS Module building package for mod-eluna for AzerothCore",
   "author": "Volek @ben-of-codecraft",
-  "contributors": [  
+  "contributors": [
     "Yehonal"
   ],
   "repository": {
