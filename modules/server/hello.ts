@@ -18,6 +18,7 @@
     };
   }
   
+  // Just say Hello to the world.
   const hello = new Hello();
   RegisterPlayerEvent(PlayerEvents.PLAYER_EVENT_ON_COMMAND, (...args) =>
     hello.onCommand(...args)

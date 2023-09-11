@@ -4,6 +4,9 @@ const fs = require("fs-extra");
 const path = require("path");
 const { execSync } = require("child_process");
 const _ = require("lodash");
+const { TscWatchClient } = require('tsc-watch/client');
+const { spawn } = require("child_process");
+
 require('dotenv').config({ 
   path: 'ets.env' 
 });
@@ -56,7 +59,8 @@ function buildModules(luaDir, moduleDir, watch, liveReload) {
     try {
       luaDir = luaDir || process.env.ETS_BUILD_ROOT;
       moduleDir = moduleDir || process.env.ETS_MODULE_DIR;
-      const common = process.env.ETS_COMMON_DIR || "common";
+      const etsCommon = process.env.ETS_COMMON_DIR || "common";
+      const etsModules = process.env.ETS_MODULE_DIR || "modules";
   
       if (!luaDir) {
         log.error("ETS build root could not be determined. Review ets.env - ETS_BUILD_ROOT or pass as argument --luadir");        
@@ -69,50 +73,95 @@ function buildModules(luaDir, moduleDir, watch, liveReload) {
       }
   
       const outputDir = path.resolve(luaDir, moduleDir);
-      const commonDir = path.resolve(luaDir, common);
-      const watchFlag = watch ? "--watch" : "";      
+      const commonDir = path.resolve(luaDir, etsCommon);
+      const tsModulesDir = path.resolve(process.cwd(), etsModules);      
 
-      log.info(`Building modules in ${outputDir}`);
-      execSync(`npx tstl ${watchFlag} --outDir "${outputDir}"`, {
-        cwd: __dirname,
-        stdio: "inherit",
-      });
-
-      // if there is not a directory
-      log.success(`Module files created in ${outputDir}`);
-
-      // updating common libs with full file. 
-      console.log(fs.moveSync(
-        path.resolve(outputDir, "lualib_bundle.lua"),
-        path.resolve(commonDir, "lualib_bundle.lua"), 
-        { overwrite: true }
-      ));
-
-      if (liveReload) {        
-        log.info(`Starting Eluna watcher... (THIS ONLY WORKS WITH DOCKER CONFIGS!)`);
-        const runShellScript = () => {
-          const scriptProcess = spawn("./send-reload-eluna.sh");
-  
-          scriptProcess.stdout.on("close", (data) => {
-            log.success("Reloading Eluna complete..");
-          });
-  
-          scriptProcess.stderr.on("data", (data) => {
-            log.error(`Script Error: ${data}`);
-          });
-        };
-  
-        const rerunEluna = _.debounce(runShellScript, 300);
-        fs.watch(outputDir, (eventType, filename) => {
-          if (eventType === "change" || eventType === "rename") {
-            log.info(`Change detected in ${filename}. \nReloading eluna...`);
-            rerunEluna();
-          }
+      // If the watch command is not sent we can simply build the modules. 
+      if(!watch) {
+        log.info(`Building modules in ${outputDir}`);
+        execSync(`npx tstl --outDir "${outputDir}"`, {
+          cwd: __dirname,
+          stdio: "inherit",
         });
-  
-        log.success("Starting Eluna watcher...");
-        runShellScript();
+
+        // if there is not a directory
+        log.success(`Module files created in ${outputDir}`);
+
+        // updating common libs with full file. 
+        fs.moveSync(
+          path.resolve(outputDir, "lualib_bundle.lua"),
+          path.resolve(commonDir, "lualib_bundle.lua"), 
+          { overwrite: true }
+        );
       }
+
+      // It watch is specified we need to use tscwatch so stdout can be updated correctly. 
+      if(watch) {
+        const tscwatch = new TscWatchClient();
+
+        tscwatch.on("success", () => {
+          log.success(`Modules built successfully to ${outputDir}`);          
+
+          let reloadError = false; 
+          // if live reload is also enabled we send a signal to reload eluna to the server
+          if(liveReload) {
+            log.info(`Reloading Eluna...`);
+            const reloadprocess = spawn("./node_modules/.bin/send-reload-eluna.sh");
+
+            reloadprocess.stdout.on("data", (data)=> {
+              log.info(data);
+            });
+
+            reloadprocess.stderr.on("data", (data)=> {
+              log.error(`Error reloading eluna: ${data}`);
+              reloadError = true; 
+
+            });
+
+            reloadprocess.stdout.on("close", (data) => {
+              if(!reloadError) {
+                log.success("Reloading Eluna complete..");
+              } else {
+                log.error("There was an error reloading Eluna. Please review errors and fix.");
+              }
+            });
+          }
+        }); 
+
+        tscwatch.on("compile_errors", (errors) => {
+          log.error("There were errors compiling modules. Please review errors and fix.", errors);          
+        }); 
+        
+        tscwatch.start("--outDir", outputDir);
+      }
+
+
+
+      // if (watch && liveReload) {        
+      //   log.info(`Starting Eluna watcher... (THIS ONLY WORKS WITH DOCKER CONFIGS!)`);
+      //   const runShellScript = () => {
+      //     const scriptProcess = spawn("./send-reload-eluna.sh");
+  
+      //     scriptProcess.stdout.on("close", (data) => {
+      //       log.success("Reloading Eluna complete..");
+      //     });
+  
+      //     scriptProcess.stderr.on("data", (data) => {
+      //       log.error(`Script Error: ${data}`);
+      //     });
+      //   };
+  
+      //   const rerunEluna = _.debounce(runShellScript, 300);
+      //   fs.watch(outputDir, (eventType, filename) => {
+      //     if (eventType === "change" || eventType === "rename") {
+      //       log.info(`Change detected in ${filename}. \nReloading eluna...`);
+      //       rerunEluna();
+      //     }
+      //   });
+  
+      //   log.success("Starting Eluna watcher...");
+      //   runShellScript();
+      // }
 
     } catch (error) {
       log.error(`Error occurred: ${error.message}`);

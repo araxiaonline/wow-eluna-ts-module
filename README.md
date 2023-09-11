@@ -85,9 +85,10 @@ After you run ets init it will create an *env.ets*  file the following options a
 
 | Configuration | Description |
 | --- | --- |
-| ETS_BUILD_ROOT | The root directory of where new modules and common functions will be saved |
-| ETS_MODULE_DIR | Where individual modules will be transpiled to. |
-| ETS_COMMON_DIR | Where common functions will be transpiled when npx ets libs is run
+| ETS_BUILD_ROOT | The root directory of where new modules and common functions will be saved. Defaults to './dist' |
+| ETS_MODULE_DIR | Where individual modules will be transpiled to. Defaults to 'module' |
+| ETS_COMMON_DIR | Where common functions will be transpiled when npx ets libs is run. Defaults to 'common' |
+| ETS_MODULES_TS_DIR | The root directory of where TypeScript modules are created. Defaults to 'modules' |
 
 
 ## ETS Client
