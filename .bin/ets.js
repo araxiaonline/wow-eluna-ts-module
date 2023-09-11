@@ -55,7 +55,7 @@ program.parse(process.argv);
 function buildModules(luaDir, moduleDir, watch, liveReload) {
     try {
       luaDir = luaDir || process.env.ETS_BUILD_ROOT;
-      moduleDir = moduleDir || process.env.ELUNATS_BUILD_FILE;
+      moduleDir = moduleDir || process.env.ETS_MODULE_DIR;
       const common = process.env.ETS_COMMON_DIR || "common";
   
       if (!luaDir) {
@@ -68,25 +68,25 @@ function buildModules(luaDir, moduleDir, watch, liveReload) {
         process.exit(1);
       }
   
-      const luaBundle = path.resolve(luaDir, moduleDir);
+      const outputDir = path.resolve(luaDir, moduleDir);
       const commonDir = path.resolve(luaDir, common);
       const watchFlag = watch ? "--watch" : "";      
 
-      log.info(`Building modules in ${luaBundle}`);
-      execSync(`npx tstl ${watchFlag}`, {
+      log.info(`Building modules in ${outputDir}`);
+      execSync(`npx tstl ${watchFlag} --outDir "${outputDir}"`, {
         cwd: __dirname,
         stdio: "inherit",
       });
 
       // if there is not a directory
-      log.success(`Module files created in ${luaBundle}`);
+      log.success(`Module files created in ${outputDir}`);
 
       // updating common libs with full file. 
-      fs.moveSync(
-        path.resolve(luaBundle, "lualib_bundle.lua"),
+      console.log(fs.moveSync(
+        path.resolve(outputDir, "lualib_bundle.lua"),
         path.resolve(commonDir, "lualib_bundle.lua"), 
         { overwrite: true }
-      );
+      ));
 
       if (liveReload) {        
         log.info(`Starting Eluna watcher... (THIS ONLY WORKS WITH DOCKER CONFIGS!)`);
@@ -103,7 +103,7 @@ function buildModules(luaDir, moduleDir, watch, liveReload) {
         };
   
         const rerunEluna = _.debounce(runShellScript, 300);
-        fs.watch(luaDir, (eventType, filename) => {
+        fs.watch(outputDir, (eventType, filename) => {
           if (eventType === "change" || eventType === "rename") {
             log.info(`Change detected in ${filename}. \nReloading eluna...`);
             rerunEluna();
