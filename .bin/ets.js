@@ -106,7 +106,7 @@ function buildModules(luaDir, moduleDir, watch, liveReload) {
           // if live reload is also enabled we send a signal to reload eluna to the server
           if(liveReload) {
             log.info(`Reloading Eluna...`);
-            const reloadprocess = spawn("./node_modules/.bin/send-reload-eluna.sh");
+            const reloadprocess = spawn("./node_modules/.bin/eluna-reload");
 
             reloadprocess.stdout.on("data", (data)=> {
               log.info(data);
@@ -138,11 +138,11 @@ function buildModules(luaDir, moduleDir, watch, liveReload) {
     } catch (error) {
 
       // Clean up any processes that are running.
-      if(tscwatch) {
+      if(typeof tscwatch !== "undefined") {
         tscwatch.stop();
       }
 
-      if(reloadprocess) {
+      if(typeof reloadprocess !== "undefined") {
         reloadprocess.kill();
       }
 
@@ -152,11 +152,11 @@ function buildModules(luaDir, moduleDir, watch, liveReload) {
 
     // Clean up any processes that are running. 
     process.on("exit", () => {
-      if(tscwatch) {
+      if(typeof tscwatch !== "undefined") {
         tscwatch.stop();
       }
 
-      if(reloadprocess) {
+      if(typeof reloadprocess !== "undefined") {
         reloadprocess.kill();
       }
     })
