@@ -11,7 +11,6 @@
       if (command == "hello") {
         const message = "Hello World command was entered!";
         
-        PrintInfo(message);
         SendWorldMessage(message);
       }    
       return true;

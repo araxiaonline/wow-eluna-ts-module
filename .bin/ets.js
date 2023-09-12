@@ -135,38 +135,31 @@ function buildModules(luaDir, moduleDir, watch, liveReload) {
         tscwatch.start("--outDir", outputDir);
       }
 
-
-
-      // if (watch && liveReload) {        
-      //   log.info(`Starting Eluna watcher... (THIS ONLY WORKS WITH DOCKER CONFIGS!)`);
-      //   const runShellScript = () => {
-      //     const scriptProcess = spawn("./send-reload-eluna.sh");
-  
-      //     scriptProcess.stdout.on("close", (data) => {
-      //       log.success("Reloading Eluna complete..");
-      //     });
-  
-      //     scriptProcess.stderr.on("data", (data) => {
-      //       log.error(`Script Error: ${data}`);
-      //     });
-      //   };
-  
-      //   const rerunEluna = _.debounce(runShellScript, 300);
-      //   fs.watch(outputDir, (eventType, filename) => {
-      //     if (eventType === "change" || eventType === "rename") {
-      //       log.info(`Change detected in ${filename}. \nReloading eluna...`);
-      //       rerunEluna();
-      //     }
-      //   });
-  
-      //   log.success("Starting Eluna watcher...");
-      //   runShellScript();
-      // }
-
     } catch (error) {
+
+      // Clean up any processes that are running.
+      if(tscwatch) {
+        tscwatch.stop();
+      }
+
+      if(reloadprocess) {
+        reloadprocess.kill();
+      }
+
       log.error(`Error occurred: ${error.message}`);
       process.exit(1);
     }
+
+    // Clean up any processes that are running. 
+    process.on("exit", () => {
+      if(tscwatch) {
+        tscwatch.stop();
+      }
+
+      if(reloadprocess) {
+        reloadprocess.kill();
+      }
+    })
 
     return; 
   }
