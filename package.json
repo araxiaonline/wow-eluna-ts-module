@@ -31,7 +31,8 @@
   ],
   "types": "types/index.d.ts",
   "bin": {
-    "ets": ".bin/ets.js"
+    "ets": ".bin/ets.js",
+    "eluna-reload": ".bin/send-reload-eluna.sh"
   },
   "scripts": {
     "build": "tstl -p tsconfig.build.json",
