@@ -55,6 +55,7 @@
     "lodash": "^4.17.21",
     "lua-types": "^2.10.1",
     "tsc-watch": "^6.0.4",
-    "typescript-to-lua": "^1.19.0"
+    "typescript-to-lua": "^1.19.0",
+    "@wartoshika/wow-declarations": "^8.3.0-release.1"
   }
 }

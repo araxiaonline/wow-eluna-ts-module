@@ -17,7 +17,8 @@
       "typeRoots": [
         "./node_modules/wow-eluna-ts-module/types",
         "./node_modules",
-        "./node_modules/@types"   
+        "./node_modules/@types", 
+        "./node_modules/@wartoshika/wow-declarations"
       ],
       "rootDir": "modules"
     },
