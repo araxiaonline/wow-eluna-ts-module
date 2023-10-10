@@ -87,12 +87,15 @@ function buildModules(luaDir, moduleDir, watch, liveReload) {
         // if there is not a directory
         log.success(`Module files created in ${outputDir}`);
 
-        // updating common libs with full file. 
-        fs.moveSync(
-          path.resolve(outputDir, "lualib_bundle.lua"),
-          path.resolve(commonDir, "lualib_bundle.lua"), 
-          { overwrite: true }
-        );
+        // If the required full lib is created then move it also 
+        if(fs.existsSync(path.resolve(outputDir, "lualib_bundle.lua"))) {
+          // updating common libs with full file. 
+          fs.moveSync(
+            path.resolve(outputDir, "lualib_bundle.lua"),
+            path.resolve(commonDir, "lualib_bundle.lua"), 
+            { overwrite: true }
+          );
+        }        
       }
 
       // It watch is specified we need to use tscwatch so stdout can be updated correctly. 
