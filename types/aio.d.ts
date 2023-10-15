@@ -19,7 +19,7 @@ declare interface AIO {
     /**
      * Returns true if we are on server side, false if we are on client side
      */
-    isServer(): boolean;
+    IsServer(): boolean;
 
     /**
      * Returns AIO version - note the type is not guaranteed to be a number
