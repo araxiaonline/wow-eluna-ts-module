@@ -32,7 +32,7 @@ declare interface AIO {
      * @param name - An optional name for the addon.
      * @returns Returns true on the server side and false on the client side.
      */
-    AddAddon(path: string, name?: string): boolean;
+    AddAddon(path?: string, name?: string): boolean;
 
     /**
      * Adds 'code' to the addons sent to players. The function only exists on the server side.
