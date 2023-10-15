@@ -13,7 +13,8 @@
  * allowing you to create addons that seamlessly run on both server and client sides
  * while maintaining shared data and functionality.
  */
-declare class AIO {
+/** @noSelf **/
+declare interface AIO {
     
     /**
      * Returns true if we are on server side, false if we are on client side
@@ -113,7 +114,8 @@ declare class AIO {
  * 
  * With AIO messages, you can seamlessly exchange information and instructions between different parts of your addon, enhancing its functionality and interactivity.
  */
-declare class Msg {
+/** @noSelf **/
+declare interface Msg {
     /**
      * The name is used to identify the handler function on the receiving end. A handler function registered with RegisterEvent will be called on the receiving end with the varargs.
      * @param name - The name used to identify the handler function.

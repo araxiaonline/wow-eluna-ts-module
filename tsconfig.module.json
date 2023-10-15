@@ -12,7 +12,8 @@
       "types": [
         "lua-types/5.2",
         "@typescript-to-lua/language-extensions",
-        "wow-eluna-ts-module"                              
+        "wow-eluna-ts-module",
+        "@wartoshika/wow-declarations"                              
       ],
       "typeRoots": [
         "./node_modules/wow-eluna-ts-module/types",
