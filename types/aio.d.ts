@@ -1,4 +1,19 @@
-interface AIO {
+/**
+ * AIO (Addon-IO) is a framework for managing and enhancing World of Warcraft addons.
+ * It provides a seamless way to handle communication between server and client-side code,
+ * making it easier to develop cross-platform WoW addons with shared functionality.
+ *
+ * To use AIO in your addon:
+ * 1. Include AIO in your Lua script: 'local AIO = AIO or require("AIO")'.
+ * 2. Determine if the code is running on the server or client: 'isServer = AIO.IsServer()'.
+ * 3. Add your Lua code for server or client using 'AIO.AddAddon()' to ensure synchronized execution.
+ * 4. Use AIO's messaging system to communicate and synchronize data between server and client.
+ *
+ * AIO simplifies the development of powerful and flexible World of Warcraft addons,
+ * allowing you to create addons that seamlessly run on both server and client sides
+ * while maintaining shared data and functionality.
+ */
+declare class AIO {
     
     /**
      * Returns true if we are on server side, false if we are on client side
@@ -83,9 +98,22 @@ interface AIO {
 }
 
 /**
- * Represents an AIO message.
+ * Represents an AIO message, an essential component for communication and data synchronization within the AIO framework.
+ * 
+ * AIO messages facilitate seamless communication between server and client components of your addon. They allow you to package and send data, commands, and information, enabling real-time interaction and data sharing.
+ * 
+ * Usage:
+ * 1. Use the `Add` method to define the purpose of the message and include any additional data.
+ * 2. Append multiple messages using the `Append` method for more complex interactions.
+ * 3. Use the `Send` method to transmit the message to the designated recipients (players or the server).
+ * 4. You can check if a message contains data using the `HasMsg` method.
+ * 5. Convert the message to a string with the `ToString` method, if needed.
+ * 6. To clear the message and start fresh, use the `Clear` method.
+ * 7. The `Assemble` method is mainly for internal use.
+ * 
+ * With AIO messages, you can seamlessly exchange information and instructions between different parts of your addon, enhancing its functionality and interactivity.
  */
-interface Msg {
+declare class Msg {
     /**
      * The name is used to identify the handler function on the receiving end. A handler function registered with RegisterEvent will be called on the receiving end with the varargs.
      * @param name - The name used to identify the handler function.
@@ -140,6 +168,6 @@ interface Msg {
    */
   declare function AIO_debug(...args: any): void;
 
-  interface msgmt {
+  declare class msgmt {
     Add(name: string, ...args: any): void;  
   }
