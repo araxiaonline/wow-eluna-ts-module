@@ -6,6 +6,7 @@ const { execSync } = require("child_process");
 const _ = require("lodash");
 const { TscWatchClient } = require('tsc-watch/client');
 const { spawn } = require("child_process");
+const { Client } = require('node-scp'); 
 
 require('dotenv').config({ 
   path: 'ets.env' 
@@ -23,7 +24,7 @@ program
   .option("-d, --luadir <luadir>", "The directory where the transpiled lua scripts will be placed. Defaults to './dist'")
   .option("-m, --module <moduledir>", "The name of the directory of where the module transpiled code will go")
   .option("-w, --watch", "Watch for changes of modules and rebuilds lua files. (default: false)")
-  .option("-l, --live-reload", "Docker Configs Only! This option will add live reloading of eluna on server  (default: false)")
+  .option("-l, --live-reload", "Docker Configs Only! This option will add live reloading of eluna on server  (default: false)")  
   .description("Transpiles TypeScript modules into lua at specified directory")
   .action(({ luaDir, moduleDir, watch, liveReload }) => {
     buildModules(luaDir, moduleDir, watch, liveReload);
@@ -43,6 +44,14 @@ program
   .description("Initialize the project building base libs and adding environment variables")
   .action(({example}) => {
     initProject(example);    
+  });
+
+program
+  .command("deploy")
+  .option("-e, --env <env>", "Environment to deploy the modules to dev, prod. (default: dev)")
+  .description("Deploy  built lua modules to the server this requires configuration to be set in ets.env")
+  .action(async ({env}) => {
+    deploy(env); 
   });
 
 program.parse(process.argv);
@@ -269,4 +278,86 @@ function buildModules(luaDir, moduleDir, watch, liveReload) {
     return;
   }
 
-  
+  /**
+   * Uses scp protocol to copy files to a remote server more
+   * protocols may be added in the future
+   * @param {string} env - environment from the command 
+   */
+  async function deploy(env = "dev") {
+
+    const config = {
+      host: getEnv(`${env.toUpperCase()}_HOST`) ||  'localhost',
+      port: getEnv(`${env.toUpperCase()}_PORT`) || 22,
+      path: getEnv(`${env.toUpperCase()}_PATH`) || '/azerothcore/lua_scripts/',
+      username: getEnv( `${env.toUpperCase()}_USER`) || '',
+      password: getEnv( `${env.toUpperCase()}_PASS`) || '',
+      privateKey: getEnv( `${env.toUpperCase()}_PRIVATE_KEY`) || undefined,
+      passphrase: getEnv( `${env.toUpperCase()}_PRIVATE_KEY_PASS`) || undefined
+
+    };
+
+    if(!config.host) {
+      log.error(`Missing ${env.toUpperCase()}_HOST in ets.env`);
+      process.exit(1);
+    }
+    
+    // If the remote host is the local file system we will just do a local copy instead of scp
+    if(config.host === 'localhost' || config.host === '127.0.0.1') {
+      const outputDir = path.resolve(process.cwd(), process.env.ETS_BUILD_ROOT, process.env.ETS_MODULE_DIR);
+      const remoteDir = path.resolve(config.path);
+
+      fs.copySync(outputDir, remoteDir, { overwrite: true });
+      log.success(`Modules copied to ${remoteDir}`);
+
+      if(fs.existsSync(path.join(process.cwd(), process.env.ETS_BUILD_ROOT, process.env.ETS_COMMON_DIR))) {
+        const commonDir = path.resolve(process.cwd(), process.env.ETS_BUILD_ROOT, process.env.ETS_COMMON_DIR);
+
+        fs.copySync(commonDir, remoteDir, { overwrite: false });
+        log.success(`Common lua libraries copied to ${remoteDir}`);
+      }
+     
+      return;
+    }
+
+    if(!config.username || !config.password) {
+      log.error(`Missing ${env.toUpperCase()}_USER or ${env.toUpperCase()}_PASS in ets.env`);
+      process.exit(1);
+    }
+
+    try {
+      const client = await Client(config);     
+
+      await client.uploadDir(
+        path.join(process.cwd(), process.env.ETS_BUILD_ROOT, process.env.ETS_MODULE_DIR),
+        config.path
+      ); 
+
+      // if there is also a common directory built we will deploy that as well
+      if(fs.existsSync(path.join(process.cwd(), process.env.ETS_BUILD_ROOT, process.env.ETS_COMMON_DIR))) {
+        await client.uploadDir(
+          path.join(process.cwd(), process.env.ETS_BUILD_ROOT, process.env.ETS_COMMON_DIR),
+          config.path
+        ); 
+      }
+
+      client.close(); 
+
+      log.success(`Modules uploaded to ${config.host}:${config.path}`);
+    } catch(e) {
+      log.error(e.message);
+    }   
+
+  }
+
+  /**
+   * Get Environment Variable if found or return false. 
+   * @param {string} name 
+   * @returns string | number | boolean
+   */
+  function getEnv(name) { 
+    if(typeof process.env[name] === undefined || process.env[name] === null) {
+      return false; 
+    } 
+
+    return process.env[name]; 
+  }
