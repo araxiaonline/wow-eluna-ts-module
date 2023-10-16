@@ -1,6 +1,6 @@
 {
   "name": "wow-eluna-ts-module",
-  "version": "1.4.4",
+  "version": "1.5.0",
   "description": "Eluna-TS Module building package for mod-eluna for AzerothCore",
   "author": {
     "name": "@ben-of-codecraft (Volek)",
@@ -48,15 +48,16 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
+    "@araxiaonline/wow-wotlk-declarations": "^3.3.5-a.2",
     "@typescript-to-lua/language-extensions": "^1.19.0",
-    "@araxiaonline/wow-wothlk-declarations": "^3.3.5-a.1",
     "commander": "^7.2.0",
     "dotenv": "^9.0.2",
     "fs-extra": "^11.1.1",
     "lodash": "^4.17.21",
     "lua-types": "^2.10.1",
+    "node-scp": "^0.0.23",
+    "ts-node": "^10.9.1",
     "tsc-watch": "^6.0.4",
-    "typescript-to-lua": "^1.19.0",
-    "ts-node": "^10.9.1"
+    "typescript-to-lua": "^1.19.0"
   }
 }
