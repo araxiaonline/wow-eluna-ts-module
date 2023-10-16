@@ -185,7 +185,7 @@ function buildModules(luaDir, moduleDir, watch, liveReload) {
     
     // Environment variables
     const sourceFile = path.join(__dirname, "../ets.env");
-    const destFile = path.join(callerDir, "ets.env");
+    const destFile = path.join(callerDir, "ets.env");    
 
     // TSCONFIG defaults for module
     const buildSrc = path.join(__dirname, "../tsconfig.module.json");
@@ -198,6 +198,10 @@ function buildModules(luaDir, moduleDir, watch, liveReload) {
     // Example module
     const exampleSrc = path.join(__dirname, "../modules");
     const exampleDest = path.join(callerDir, "modules");
+
+    // TSTL Plugins
+    const pluginSrc = path.join(__dirname, "../plugins");
+    const pluginDest = path.join(callerDir, "plugins"); 
 
     if (fs.existsSync(sourceFile)) {
       fs.copyFileSync(sourceFile, destFile);
@@ -221,6 +225,14 @@ function buildModules(luaDir, moduleDir, watch, liveReload) {
     if(fs.existsSync(schemaSrc)) {
       fs.copyFileSync(schemaSrc, schemaDest);
       log.success("default tstl.schema.json file copied successfully.");
+    }
+
+    // Copy the plugins needed for helping with specific transpiles. 
+    if(schemaDest.execSync(pluginSrc) && !fs.existsSync(pluginDest)) {
+      fs.copySync(pluginSrc, pluginDest); 
+      log.success("installed plugins for tstl"); 
+    } else {
+      log.error("failed to install plugins for tstl will need manual install or some documented features will not work"); 
     }
 
     // if an example is flagged then copy the example module
