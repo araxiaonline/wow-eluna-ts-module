@@ -8,6 +8,16 @@ The project itself is made possible by the great work by team that created [Type
 This package is a heavily reworked version of the origina Eluna-TS package[ElunaTS](https://github.com/azerothcore/eluna-ts) by @Yehonal.  
 
 ## Updates
+**Oct 16, 2023 v1.5.0**
+* Feature: Adds deploy command to enable module deployment from same command. See configuration and command details below. 
+* Feature: Added support for AIO definitions for modules built for Rochet2 AIO 
+* Feature: Added wow-wotlk-declarations for references to AddOn WoWAPI commands when building AIO client side UI's
+
+**Oct 10, 2023 v1.4.0**
+* Bug: Fixed bug with ets build when there is not a common directory build in tstl process
+* Bug: Watch is not correctly building tstl marking as not usable at the moment, will fix later. 
+
+**Oct 3, 2023 v1.3.0**
 * New binary __ets__ simplifies how to setup new eluna-ts modules. 
 * Reduces repo files and simplifies structure. 
 * Focus on development of modules without need of container environment. 
@@ -83,13 +93,26 @@ Live reload option is environment setup specific with many assumptions and I use
 ---
 After you run ets init it will create an *env.ets*  file the following options are set: 
 
-| Configuration | Description |
+| Build Configuration | Description |
 | --- | --- |
 | ETS_BUILD_ROOT | The root directory of where new modules and common functions will be saved. Defaults to './dist' |
 | ETS_MODULE_DIR | Where individual modules will be transpiled to. Defaults to 'module' |
 | ETS_COMMON_DIR | Where common functions will be transpiled when npx ets libs is run. Defaults to 'common' |
 | ETS_MODULES_TS_DIR | The root directory of where TypeScript modules are created. Defaults to 'modules' |
 
+**Deployment Configuration**
+You can now use ETS command line to deploy the built modules. The following configurations options are needed to send SCP commands to the server running your server. 
+| Deploy Configuration | Description |
+| --- | --- |
+| DEV_HOST | Host address where to connecto scp files.  IF localhost or 127.0.0.1 is set, then it will instead perform a normal cp to the local filesystem |
+| DEV_PATH | Where on the server the files will be copied to. |
+| DEV_USER | SCP user to login to the server with |
+| DEV_PASS | SCP user password to login to the server with |
+| DEV_PORT | Port to use when authenticating with the server, if not set defaults to 22 |
+| DEV_PRIVATE_KEY | Path to a private key that is used to connect to the remote host. |
+| DEV_PRIVATE_KEY_PASS | PAssphrase used with the private key to connect to the remote host |
+
+> All the settings above are duplicated for a production environment by substituting PROD_ instead of DEV_.  These are already defined in your default ets.env
 
 ## ETS Client
 
@@ -101,9 +124,8 @@ Commands to use the ETS client
 | `npx ets init` | Initializes new a project as a ets module with. <br>___Options:___<br> -x, --example : Creates Hello World example if modules directory is not created.  |
 | `npx ets libs` | Create shared functions that can be used with modules. Carry over from eluna-ts |
 | `npx ets build` | Transpiles the typescript modules into the build dir.  <br>___Options:___<br> -d, --luadir : Override the default root build directory <br> -m, --module : Override the name of the directory where build will transpiled modules to. <br> -w, --watch : Enable watch process to automatically build when TypeScrip code changes. <br> -l, -live-reload : Enables automatic eluna reloading if running a local docker build of Azeroth Core. 
+| `npx ets deploy` | Deploys your modules to a remote host or local host dependingon the configurations set. Can target a deployment environment by using -e.  <br>__Options:__<br> -e, --env : Set the target environment to deploy the files to, (default: dev)
 | `npx ets publish` | Submits module(s) to registry for download to other servers and for use in CI/CD (Not yet publicly implemented)
-
-
 
 
 ## Additional Notes 
