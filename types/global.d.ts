@@ -5468,7 +5468,7 @@ declare class WorldObject extends EObject {
      * Returns the coordinates and orientation of the [WorldObject]
      * @tupleReturn
      */
-  GetLocation(): [number, number, number, number];
+  GetLocation(): LuaMultiReturn<[number, number, number, number]>;
 
   /**
      * Returns the current [Map] object of the [WorldObject]
@@ -5551,7 +5551,7 @@ declare class WorldObject extends EObject {
   /**
      * Returns the x, y and z of a point dist away from the [WorldObject].
      */
-  GetRelativePoint(distance: number, angle: number): [number, number, number];
+  GetRelativePoint(distance: number, angle: number): LuaMultiReturn<[number, number, number]>;
 
   /**
      * Returns the current X coordinate of the [WorldObject]
