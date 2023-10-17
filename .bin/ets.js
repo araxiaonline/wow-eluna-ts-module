@@ -319,12 +319,11 @@ function buildModules(luaDir, moduleDir, watch, liveReload) {
       return;
     }
 
-    if(!config.username || !config.password) {
-      log.error(`Missing ${env.toUpperCase()}_USER or ${env.toUpperCase()}_PASS in ets.env`);
-      process.exit(1);
-    }
-
     try {
+
+      if(config.privateKey) {
+        config.privateKey = fs.readFileSync(config.privateKey, 'utf8');
+      }      
       const client = await Client(config);     
 
       await client.uploadDir(
@@ -341,11 +340,11 @@ function buildModules(luaDir, moduleDir, watch, liveReload) {
       }
 
       client.close(); 
-
       log.success(`Modules uploaded to ${config.host}:${config.path}`);
     } catch(e) {
-      log.error(e.message);
-    }   
+      console.log(e);
+      log.error(e.message);      
+    } 
 
   }
 

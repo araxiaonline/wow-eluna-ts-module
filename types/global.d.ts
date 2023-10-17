@@ -1278,6 +1278,11 @@ declare class ElunaQuery {
   GetRow(): Record<string, unknown>;
 
   /**
+   * 
+   */
+  GetRow(): Record<string, number>;
+
+  /**
      * Returns the number of rows in the result set.
      */
   GetRowCount(): number;
@@ -1530,7 +1535,8 @@ declare function Ban(
  * If you need results from the query, use [Global:CharDBQuery] instead.
  *     CharDBExecute("DELETE FROM my_table")
  */
-declare function CharDBExecute(this:void,sql: string): void;
+/** @noSelf */
+declare function CharDBExecute(sql: string): void;
 
 /**
  * Executes a SQL query on the character database and returns an [ElunaQuery].
@@ -1538,7 +1544,8 @@ declare function CharDBExecute(this:void,sql: string): void;
  *   (i.e. execution halts until the query has finished and then results are returned).
  * For an example see [Global:WorldDBQuery].
  */
-declare function CharDBQuery(this:void,sql: string): ElunaQuery;
+/** @noSelf */
+declare function CharDBQuery(sql: string): ElunaQuery;
 
 /**
  * Unbinds event handlers for either all [BattleGround] events, or one type of event.
@@ -1966,17 +1973,20 @@ declare function PerformIngameSpawn(this:void,
 /**
  * Prints given parameters to the debug log.
  */
-declare function PrintDebug(this:void,...args: string[]): void;
+/** @noSelf */
+declare function PrintDebug(...args: string[]): void;
 
 /**
  * Prints given parameters to the error log.
  */
-declare function PrintError(this:void,...args: string[]): void;
+/** @noSelf */
+declare function PrintError(...args: string[]): void;
 
 /**
  * Prints given parameters to the info log.
  */
-declare function PrintInfo(this:void,...args: string[]): void;
+/** @noSelf */
+declare function PrintInfo(...args: string[]): void;
 
 /**
  * Reloads the Lua engine.
