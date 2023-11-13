@@ -510,13 +510,13 @@ declare const enum TempSummonType {
 }
 
 /**
- * @noSelf
+ * 
  */
 declare class Achievement {
    /**
     * Returns the ID of the [Achievement].
     */
-   GetID(): number;
+   GetId(): number;
 
    /**
     * Returns the name of the [Achievement].
