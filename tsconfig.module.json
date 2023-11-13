@@ -38,6 +38,9 @@
       "luaTarget": "5.2",
       "noHeader": true,
       "luaLibImport": "require",
-      "luaBundleEntry": "./modules/index.ts"
+      "luaBundleEntry": "./modules/index.ts",
+      "luaPlugins": [
+        { "name": "./plugins/aio-plugin.ts" },
+      ]
     }
   }

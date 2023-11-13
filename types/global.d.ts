@@ -245,6 +245,21 @@ declare const enum PlayerEvents {
   // UNUSED                               =     40,       // (event, player)
   // UNUSED                               =     41,       // (event, player)
   PLAYER_EVENT_ON_COMMAND = 42, // (event, player, command) - player is nil if command used from console. Can return false
+  PLAYER_EVENT_ON_PET_ADDED_TO_WORLD = 43, // (event, player, pet)
+  PLAYER_EVENT_ON_LEARN_SPELL = 44, // (event, player, spellid)
+  PLAYER_EVENT_ON_ACHIEVEMENT_COMPLETE = 45, // (event, player, achievement)
+  PLAYER_EVENT_ON_FFAPVP = 46, // (event, player, hasFfaPvp)
+  PLAYER_EVENT_ON_UPDATE_AREA = 47, // (event, player, oldArea, newArea)
+  PLAYER_EVENT_ON_CAN_INIT_TRADE = 48, // (event, player, target) - Can return false to prevent the trade
+  PLAYER_EVENT_ON_CAN_SEND_MAIL = 49, // (event, player, receiverGuid, mailbox, subject, body, money, cod, item) - Can return false to prevent sending the mail
+  PLAYER_EVENT_ON_CAN_JOIN_LFG = 50, // (event, player, roles, dungeons, comment) - Can return false to prevent queueing
+  PLAYER_EVENT_ON_QUEST_REWARD_ITEM = 51, // (event, player, item, count) 
+  PLAYER_EVENT_ON_CREATE_ITEM = 52, // (event, player, item, count) 
+  PLAYER_EVENT_ON_STORE_NEW_ITEM = 53, // (event, player, item, count) 
+  PLAYER_EVENT_ON_COMPLETE_QUEST = 54, // (event, player, quest)
+  PLAYER_EVENT_ON_CAN_GROUP_INVITE = 55, // (event, player, memberName) - Can return false to prevent inviting
+  PLAYER_EVENT_ON_GROUP_ROLL_REWARD_ITEM = 56, // (event, player, item, count)
+  PLAYER_EVENT_ON_BG_INSERTION = 57, // (event, player, type)
 }
 declare const enum ServerEvents {
   // Server
@@ -493,6 +508,22 @@ declare const enum TempSummonType {
   TEMPSUMMON_TIMED_OOC_OR_CORPSE_DESPAWN = 9, // despawns after a specified time (OOC) OR when the creature dies
   TEMPSUMMON_TIMED_OOC_OR_DEAD_DESPAWN = 10, // despawns after a specified time (OOC) OR when the creature disappears
 }
+
+/**
+ * @noSelf
+ */
+declare class Achievement {
+   /**
+    * Returns the ID of the [Achievement].
+    */
+   GetID(): number;
+
+   /**
+    * Returns the name of the [Achievement].
+    */
+   GetName(): string;
+}
+
 
 /**
 The persistent effect of a Spell that remains on a Unit after the Spell has been cast.
@@ -1278,11 +1309,6 @@ declare class ElunaQuery {
   GetRow(): Record<string, unknown>;
 
   /**
-   * 
-   */
-  GetRow(): Record<string, number>;
-
-  /**
      * Returns the number of rows in the result set.
      */
   GetRowCount(): number;
@@ -1535,8 +1561,7 @@ declare function Ban(
  * If you need results from the query, use [Global:CharDBQuery] instead.
  *     CharDBExecute("DELETE FROM my_table")
  */
-/** @noSelf */
-declare function CharDBExecute(sql: string): void;
+declare function CharDBExecute(this:void,sql: string): void;
 
 /**
  * Executes a SQL query on the character database and returns an [ElunaQuery].
@@ -1544,8 +1569,7 @@ declare function CharDBExecute(sql: string): void;
  *   (i.e. execution halts until the query has finished and then results are returned).
  * For an example see [Global:WorldDBQuery].
  */
-/** @noSelf */
-declare function CharDBQuery(sql: string): ElunaQuery;
+declare function CharDBQuery(this:void,sql: string): ElunaQuery;
 
 /**
  * Unbinds event handlers for either all [BattleGround] events, or one type of event.
@@ -1813,7 +1837,8 @@ declare function GetGuildByName(name: string): Guild;
 /**
  * Builds an [Item]'s GUID.
  * [Item] GUID consist of low GUID and type ID
- * [Player] and [Item] for example can have the same low GUID but not GUID.
+ * [Player] and [Item] for example can have the same low GUID but not GUID. 
+ * @noSelf
  */
 declare function GetItemGUID(lowguid: number): number;
 
@@ -1973,20 +1998,17 @@ declare function PerformIngameSpawn(this:void,
 /**
  * Prints given parameters to the debug log.
  */
-/** @noSelf */
-declare function PrintDebug(...args: string[]): void;
+declare function PrintDebug(this:void,...args: string[]): void;
 
 /**
  * Prints given parameters to the error log.
  */
-/** @noSelf */
-declare function PrintError(...args: string[]): void;
+declare function PrintError(this:void,...args: string[]): void;
 
 /**
  * Prints given parameters to the info log.
  */
-/** @noSelf */
-declare function PrintInfo(...args: string[]): void;
+declare function PrintInfo(this:void,...args: string[]): void;
 
 /**
  * Reloads the Lua engine.
@@ -2022,6 +2044,7 @@ declare function SaveAllPlayers(): void;
  *         MAIL_STATIONERY_CHR = 65, // Christmas
  *         MAIL_STATIONERY_ORP = 67 // Orphan
  *     };
+ * @noSelf
  */
 declare function SendMail(
   subject: string,
