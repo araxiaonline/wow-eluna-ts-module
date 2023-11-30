@@ -237,7 +237,7 @@ function buildModules(luaDir, moduleDir, watch, liveReload) {
     }
 
     // Copy the plugins needed for helping with specific transpiles. 
-    if(schemaDest.execSync(pluginSrc) && !fs.existsSync(pluginDest)) {
+    if(fs.existsSync(pluginSrc) && !fs.existsSync(pluginDest)) {
       fs.copySync(pluginSrc, pluginDest); 
       log.success("installed plugins for tstl"); 
     } else {

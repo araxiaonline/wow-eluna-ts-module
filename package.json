@@ -28,7 +28,8 @@
     "ets.env",
     "tsconfig.module.json",
     "tstl.schema.json",
-    "modules/**/*"
+    "modules/**/*",
+    "plugins/**/*"
   ],
   "types": "types/index.d.ts",
   "bin": {
