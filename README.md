@@ -180,6 +180,11 @@ To save you pain of finding the sharp edges yourself here are the ones I know ab
 * __Time translations__ - no Date Object, it doesnt work.  I have a lib of a few TS translations that will polyfill some of the common needs so you can do things with Game/Server time.  Will move into common libs once I have vetted them out more. 
 
 ## Updates
+**Dece 21, 2023 v1.6.5**
+* FEATURE: Updated wow-wothlk-declarations to latest version
+* BUG: Fixed Gameobject hooks for on use
+* BUG: Updated tsconfig strict to false from true was creating problems with CreateFrame and UI Parent for WOWAPI 
+
 **Nov 30, 2023 v1.6.4**
 * Added some readme improvements
 * Fixed major breaking bug with ets init -x
