@@ -40,7 +40,7 @@
       "luaLibImport": "require",
       "luaBundleEntry": "./modules/index.ts",
       "luaPlugins": [
-        { "name": "./plugins/aio-plugin.ts" },
+        { "name": "./plugins/aio-plugin.ts" }
       ]
     }
   }
