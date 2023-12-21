@@ -1,7 +1,7 @@
 {    
     "$schema": "./tstl.schema.json",
     "compilerOptions": {
-      "strict": true,
+      "strict": false,
       "target": "esnext",
       "outDir": "[[module_output]]",
       "skipLibCheck": true,
