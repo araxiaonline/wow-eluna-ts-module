@@ -49,7 +49,7 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "@araxiaonline/wow-wotlk-declarations": "^3.3.5",
+    "@araxiaonline/wow-wotlk-declarations": "^3.3.5-3",
     "@typescript-to-lua/language-extensions": "^1.19.0",
     "commander": "^7.2.0",
     "dotenv": "^9.0.2",
