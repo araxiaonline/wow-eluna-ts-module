@@ -1,3 +1,4 @@
+[![npm version](https://badge.fury.io/js/wow-eluna-ts-module.svg)](https://badge.fury.io/js/wow-eluna-ts-module)
 # Eluna Typescript Module (ETS-Cli) 
 
 ## Summary
