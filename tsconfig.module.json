@@ -13,13 +13,7 @@
         "lua-types/5.2",
         "@typescript-to-lua/language-extensions",
         "wow-eluna-ts-module",
-        "@araxiaonline/wow-wotlkdeclarations"                              
-      ],
-      "typeRoots": [
-        "./node_modules/wow-eluna-ts-module/types",
-        "./node_modules",
-        "./node_modules/@types", 
-        "./node_modules/@araxiaonline/wow-wotlk-declarations"
+        "@araxiaonline/wow-wotlk-declarations"                              
       ],
       "rootDir": "modules"
     },
