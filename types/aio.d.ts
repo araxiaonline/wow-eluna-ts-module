@@ -52,6 +52,15 @@ declare interface AIO {
     Handle(player: Player, name: string, handlername: string, ...args: any): void;
 
     /**
+     * Trigger a handler function that has the name 'handlername' from the handlertable added with AddHandlers for the 'name'.
+     * This is the client-side version of Handle.
+     * @param name 
+     * @param handlername 
+     * @param args 
+     */
+    Handle(name: string, handlername: string, ...args: any): void;
+
+    /**
      * Adds a table of handler functions for the specified 'name'.
      * @param name - The name of the handlers.
      * @param handlertable - An object containing handler functions.

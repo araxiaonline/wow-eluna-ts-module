@@ -1,7 +1,7 @@
 declare type gossip_event_on_hello = (
   event: GossipEvents.GOSSIP_EVENT_ON_HELLO,
   player: Player,
-  object: GameObject | Creature | Item,
+  object: Item | Creature | GameObject | Player,
 ) => boolean;
 
 /**
