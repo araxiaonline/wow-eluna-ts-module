@@ -14,6 +14,11 @@ The following declarations are included:
 - WoW API
 - AIO (Rochet2)
 
+## ETS Module Registry
+There is now some public modules from our server posted and looking for new contributors to create more! 
+
+[ETS Modules Registry](https://github.com/araxiaonline/wow.ets.modules/)
+
 ## Creating a new module
 ---
 Follow these instructions to create your first ets module. 
