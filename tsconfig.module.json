@@ -1,7 +1,7 @@
 {    
     "$schema": "./tstl.schema.json",
     "compilerOptions": {
-      "strict": true,
+      "strict": false,
       "target": "esnext",
       "outDir": "[[module_output]]",
       "skipLibCheck": true,
@@ -12,12 +12,8 @@
       "types": [
         "lua-types/5.2",
         "@typescript-to-lua/language-extensions",
-        "wow-eluna-ts-module"                              
-      ],
-      "typeRoots": [
-        "./node_modules/wow-eluna-ts-module/types",
-        "./node_modules",
-        "./node_modules/@types"   
+        "wow-eluna-ts-module",
+        "@araxiaonline/wow-wotlk-declarations"                              
       ],
       "rootDir": "modules"
     },
@@ -36,6 +32,9 @@
       "luaTarget": "5.2",
       "noHeader": true,
       "luaLibImport": "require",
-      "luaBundleEntry": "./modules/index.ts"
+      "luaBundleEntry": "./modules/index.ts",
+      "luaPlugins": [
+        { "name": "./plugins/aio-plugin.ts" }
+      ]
     }
   }

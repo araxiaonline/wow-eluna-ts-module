@@ -261,6 +261,110 @@ declare type player_event_on_command = (
   command: string
 ) => boolean;
 
+declare type player_event_on_pet_added_to_world = (
+  event: PlayerEvents.PLAYER_EVENT_ON_PET_ADDED_TO_WORLD,
+  player: Player,
+  pet: Creature,
+) => void;
+
+declare type player_event_on_learn_spell = (
+  event: PlayerEvents.PLAYER_EVENT_ON_LEARN_SPELL,
+  player: Player,
+  spellId: number,
+) => boolean | string;
+
+declare type player_event_on_achievement_complete = (
+  event: PlayerEvents.PLAYER_EVENT_ON_ACHIEVEMENT_COMPLETE,
+  player: Player,
+  achievement: Achievement,
+) => boolean | string;
+
+declare type player_event_on_ffapvp = (
+  event: PlayerEvents.PLAYER_EVENT_ON_FFAPVP,
+  player: Player,
+  hasFfaPvp: boolean,
+) => boolean | string;
+
+declare type player_event_on_update_area = (
+  event: PlayerEvents.PLAYER_EVENT_ON_UPDATE_AREA,
+  player: Player,
+  oldArea: number,
+  newArea: number,
+) => boolean | void;
+
+declare type player_event_on_can_init_trade = (
+  event: PlayerEvents.PLAYER_EVENT_ON_CAN_INIT_TRADE,
+  player: Player,
+  target: Player,
+) => boolean;
+
+declare type player_event_on_can_send_mail = (
+  event: PlayerEvents.PLAYER_EVENT_ON_CAN_SEND_MAIL,
+  player: Player,
+  receiverGuid: string,
+  mailbox: string,
+  subject: string,
+  body: string,
+  money: number,
+  cod: number,
+  item: Item,
+) => boolean;
+
+declare type player_event_on_can_join_lfg = (
+  event: PlayerEvents.PLAYER_EVENT_ON_CAN_JOIN_LFG,
+  player: Player,
+  roles: string[],
+  dungeons: number[],
+  comment: string,
+) => boolean;
+
+declare type player_event_on_quest_reward_item = (
+  event: PlayerEvents.PLAYER_EVENT_ON_QUEST_REWARD_ITEM,
+  player: Player,
+  item: Item,
+  count: number,
+) => void;
+
+declare type player_event_on_create_item = (
+  event: PlayerEvents.PLAYER_EVENT_ON_CREATE_ITEM,
+  player: Player,
+  item: Item,
+  count: number,
+) => void;
+
+declare type player_event_on_store_new_item = (
+  event: PlayerEvents.PLAYER_EVENT_ON_STORE_NEW_ITEM,
+  player: Player,
+  item: Item,
+  count: number,
+) => void;
+
+declare type player_event_on_complete_quest = (
+  event: PlayerEvents.PLAYER_EVENT_ON_COMPLETE_QUEST,
+  player: Player,
+  quest: Quest,
+) => void;
+
+declare type player_event_on_can_group_invite = (
+  event: PlayerEvents.PLAYER_EVENT_ON_CAN_GROUP_INVITE,
+  player: Player,
+  memberName: string,
+) => boolean;
+
+declare type player_event_on_group_roll_reward_item = (
+  event: PlayerEvents.PLAYER_EVENT_ON_GROUP_ROLL_REWARD_ITEM,
+  player: Player,
+  item: Item,
+  count: number,
+) => void;
+
+declare type player_event_on_bg_insertion = (
+  event: PlayerEvents.PLAYER_EVENT_ON_BG_INSERTION,
+  player: Player,
+  type: any,
+) => void;
+
+
 /**
  * @noself
  *
@@ -552,5 +656,109 @@ declare function RegisterPlayerEvent(
   this:void,
   event: PlayerEvents.PLAYER_EVENT_ON_COMMAND,
   func: HookFunctionNoSelf<player_event_on_command>,
+  shots?: number,
+): (...args: any[]) => any;
+declare function RegisterPlayerEvent(
+  this: void,
+  event: PlayerEvents.PLAYER_EVENT_ON_PET_ADDED_TO_WORLD,
+  func: HookFunctionNoSelf<player_event_on_pet_added_to_world>,
+  shots?: number,
+): (...args: any[]) => any;
+
+declare function RegisterPlayerEvent(
+  this: void,
+  event: PlayerEvents.PLAYER_EVENT_ON_LEARN_SPELL,
+  func: HookFunctionNoSelf<player_event_on_learn_spell>,
+  shots?: number,
+): (...args: any[]) => any;
+
+declare function RegisterPlayerEvent(
+  this: void,
+  event: PlayerEvents.PLAYER_EVENT_ON_ACHIEVEMENT_COMPLETE,
+  func: HookFunctionNoSelf<player_event_on_achievement_complete>,
+  shots?: number,
+): (...args: any[]) => any;
+
+declare function RegisterPlayerEvent(
+  this: void,
+  event: PlayerEvents.PLAYER_EVENT_ON_FFAPVP,
+  func: HookFunctionNoSelf<player_event_on_ffapvp>,
+  shots?: number,
+): (...args: any[]) => any;
+
+declare function RegisterPlayerEvent(
+  this: void,
+  event: PlayerEvents.PLAYER_EVENT_ON_UPDATE_AREA,
+  func: HookFunctionNoSelf<player_event_on_update_area>,
+  shots?: number,
+): (...args: any[]) => any;
+
+declare function RegisterPlayerEvent(
+  this: void,
+  event: PlayerEvents.PLAYER_EVENT_ON_CAN_INIT_TRADE,
+  func: HookFunctionNoSelf<player_event_on_can_init_trade>,
+  shots?: number,
+): (...args: any[]) => any;
+
+declare function RegisterPlayerEvent(
+  this: void,
+  event: PlayerEvents.PLAYER_EVENT_ON_CAN_SEND_MAIL,
+  func: HookFunctionNoSelf<player_event_on_can_send_mail>,
+  shots?: number,
+): (...args: any[]) => any;
+
+declare function RegisterPlayerEvent(
+  this: void,
+  event: PlayerEvents.PLAYER_EVENT_ON_CAN_JOIN_LFG,
+  func: HookFunctionNoSelf<player_event_on_can_join_lfg>,
+  shots?: number,
+): (...args: any[]) => any;
+
+declare function RegisterPlayerEvent(
+  this: void,
+  event: PlayerEvents.PLAYER_EVENT_ON_QUEST_REWARD_ITEM,
+  func: HookFunctionNoSelf<player_event_on_quest_reward_item>,
+  shots?: number,
+): (...args: any[]) => any;
+
+declare function RegisterPlayerEvent(
+  this: void,
+  event: PlayerEvents.PLAYER_EVENT_ON_CREATE_ITEM,
+  func: HookFunctionNoSelf<player_event_on_create_item>,
+  shots?: number,
+): (...args: any[]) => any;
+
+declare function RegisterPlayerEvent(
+  this: void,
+  event: PlayerEvents.PLAYER_EVENT_ON_STORE_NEW_ITEM,
+  func: HookFunctionNoSelf<player_event_on_store_new_item>,
+  shots?: number,
+): (...args: any[]) => any;
+
+declare function RegisterPlayerEvent(
+  this: void,
+  event: PlayerEvents.PLAYER_EVENT_ON_COMPLETE_QUEST,
+  func: HookFunctionNoSelf<player_event_on_complete_quest>,
+  shots?: number,
+): (...args: any[]) => any;
+
+declare function RegisterPlayerEvent(
+  this: void,
+  event: PlayerEvents.PLAYER_EVENT_ON_CAN_GROUP_INVITE,
+  func: HookFunctionNoSelf<player_event_on_can_group_invite>,
+  shots?: number,
+): (...args: any[]) => any;
+
+declare function RegisterPlayerEvent(
+  this: void,
+  event: PlayerEvents.PLAYER_EVENT_ON_GROUP_ROLL_REWARD_ITEM,
+  func: HookFunctionNoSelf<player_event_on_group_roll_reward_item>,
+  shots?: number,
+): (...args: any[]) => any;
+
+declare function RegisterPlayerEvent(
+  this: void,
+  event: PlayerEvents.PLAYER_EVENT_ON_BG_INSERTION,
+  func: HookFunctionNoSelf<player_event_on_bg_insertion>,
   shots?: number,
 ): (...args: any[]) => any;

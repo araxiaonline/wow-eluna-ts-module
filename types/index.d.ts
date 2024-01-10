@@ -4,6 +4,7 @@ declare module "@azerothcore/eluna-ts-lib" {}
 import "./ac";
 import "./hotfix";
 import "./global";
+import "./aio"; 
 
 import "./hooks/BattleGroundHooks";
 import "./hooks/CreatureHooks";
@@ -17,3 +18,4 @@ import "./hooks/PacketHooks";
 import "./hooks/PlayerHooks";
 import "./hooks/ServerHooks";
 import "./hooks/VehicleHooks";
+

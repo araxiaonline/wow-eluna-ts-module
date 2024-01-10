@@ -245,6 +245,21 @@ declare const enum PlayerEvents {
   // UNUSED                               =     40,       // (event, player)
   // UNUSED                               =     41,       // (event, player)
   PLAYER_EVENT_ON_COMMAND = 42, // (event, player, command) - player is nil if command used from console. Can return false
+  PLAYER_EVENT_ON_PET_ADDED_TO_WORLD = 43, // (event, player, pet)
+  PLAYER_EVENT_ON_LEARN_SPELL = 44, // (event, player, spellid)
+  PLAYER_EVENT_ON_ACHIEVEMENT_COMPLETE = 45, // (event, player, achievement)
+  PLAYER_EVENT_ON_FFAPVP = 46, // (event, player, hasFfaPvp)
+  PLAYER_EVENT_ON_UPDATE_AREA = 47, // (event, player, oldArea, newArea)
+  PLAYER_EVENT_ON_CAN_INIT_TRADE = 48, // (event, player, target) - Can return false to prevent the trade
+  PLAYER_EVENT_ON_CAN_SEND_MAIL = 49, // (event, player, receiverGuid, mailbox, subject, body, money, cod, item) - Can return false to prevent sending the mail
+  PLAYER_EVENT_ON_CAN_JOIN_LFG = 50, // (event, player, roles, dungeons, comment) - Can return false to prevent queueing
+  PLAYER_EVENT_ON_QUEST_REWARD_ITEM = 51, // (event, player, item, count) 
+  PLAYER_EVENT_ON_CREATE_ITEM = 52, // (event, player, item, count) 
+  PLAYER_EVENT_ON_STORE_NEW_ITEM = 53, // (event, player, item, count) 
+  PLAYER_EVENT_ON_COMPLETE_QUEST = 54, // (event, player, quest)
+  PLAYER_EVENT_ON_CAN_GROUP_INVITE = 55, // (event, player, memberName) - Can return false to prevent inviting
+  PLAYER_EVENT_ON_GROUP_ROLL_REWARD_ITEM = 56, // (event, player, item, count)
+  PLAYER_EVENT_ON_BG_INSERTION = 57, // (event, player, type)
 }
 declare const enum ServerEvents {
   // Server
@@ -493,6 +508,22 @@ declare const enum TempSummonType {
   TEMPSUMMON_TIMED_OOC_OR_CORPSE_DESPAWN = 9, // despawns after a specified time (OOC) OR when the creature dies
   TEMPSUMMON_TIMED_OOC_OR_DEAD_DESPAWN = 10, // despawns after a specified time (OOC) OR when the creature disappears
 }
+
+/**
+ * 
+ */
+declare class Achievement {
+   /**
+    * Returns the ID of the [Achievement].
+    */
+   GetId(): number;
+
+   /**
+    * Returns the name of the [Achievement].
+    */
+   GetName(): string;
+}
+
 
 /**
 The persistent effect of a Spell that remains on a Unit after the Spell has been cast.
@@ -1806,7 +1837,8 @@ declare function GetGuildByName(name: string): Guild;
 /**
  * Builds an [Item]'s GUID.
  * [Item] GUID consist of low GUID and type ID
- * [Player] and [Item] for example can have the same low GUID but not GUID.
+ * [Player] and [Item] for example can have the same low GUID but not GUID. 
+ * @noSelf
  */
 declare function GetItemGUID(lowguid: number): number;
 
@@ -2012,6 +2044,7 @@ declare function SaveAllPlayers(): void;
  *         MAIL_STATIONERY_CHR = 65, // Christmas
  *         MAIL_STATIONERY_ORP = 67 // Orphan
  *     };
+ * @noSelf
  */
 declare function SendMail(
   subject: string,
@@ -5468,7 +5501,7 @@ declare class WorldObject extends EObject {
      * Returns the coordinates and orientation of the [WorldObject]
      * @tupleReturn
      */
-  GetLocation(): [number, number, number, number];
+  GetLocation(): LuaMultiReturn<[number, number, number, number]>;
 
   /**
      * Returns the current [Map] object of the [WorldObject]
@@ -5551,7 +5584,7 @@ declare class WorldObject extends EObject {
   /**
      * Returns the x, y and z of a point dist away from the [WorldObject].
      */
-  GetRelativePoint(distance: number, angle: number): [number, number, number];
+  GetRelativePoint(distance: number, angle: number): LuaMultiReturn<[number, number, number]>;
 
   /**
      * Returns the current X coordinate of the [WorldObject]

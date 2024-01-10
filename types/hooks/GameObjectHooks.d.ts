@@ -74,8 +74,8 @@ declare type gameobject_event_on_remove = (
 
 declare type gameobject_event_on_use = (
   event: GameObjectEvents.GAMEOBJECT_EVENT_ON_USE,
-  pPlayer: Player,
   pGameObject: GameObject,
+  pPlayer: Player,
 ) => boolean;
 
 /**
