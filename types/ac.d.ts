@@ -260,3 +260,111 @@ declare const enum ShutdownMask {
   SHUTDOWN_MASK_RESTART = 1,
   SHUTDOWN_MASK_IDLE = 2,
 }
+
+declare const BotEquipmentSlotMap = {
+  MAINHAND:    0,
+  OFFHAND:     1,
+  RANGED:      2,
+  HEAD:        3,
+  SHOULDERS:   4,
+  CHEST:       5,
+  WAIST:       6,
+  LEGS:        7,
+  FEET:        8,
+  WRIST:       9,
+  HANDS:      10,
+  BACK:       11,
+  BODY:       12, 
+  FINGER1:    13,
+  FINGER2:    14,
+  TRINKET1:   15,
+  TRINKET2:   16,
+  NECK:       17,
+} as const;
+
+declare type BotEquipmentSlotName = keyof typeof BotEquipmentSlotMap; 
+declare type BotEquipmentSlotNum = BotEquipmentSlotMap[BotEquipmentSlotName];
+
+declare const BotStatMap = {
+  MANA:                      0,
+  HEALTH:                    1,
+  AGILITY:                   3,
+  STRENGTH:                  4,
+  INTELLECT:                 5,
+  SPIRIT:                    6,
+  STAMINA:                   7,
+  DEFENSE_SKILL_RATING:     12,
+  DODGE_RATING:             13,
+  PARRY_RATING:             14,
+  BLOCK_RATING:             15,
+  HIT_MELEE_RATING:         16,
+  HIT_RANGED_RATING:        17,
+  HIT_SPELL_RATING:         18,
+  CRIT_MELEE_RATING:        19,
+  CRIT_RANGED_RATING:       20,
+  CRIT_SPELL_RATING:        21,
+  HIT_TAKEN_MELEE_RATING:   22,
+  HIT_TAKEN_RANGED_RATING:  23,
+  HIT_TAKEN_SPELL_RATING:   24,
+  CRIT_TAKEN_MELEE_RATING:  25,
+  CRIT_TAKEN_RANGED_RATING: 26,
+  CRIT_TAKEN_SPELL_RATING:  27,
+  HASTE_MELEE_RATING:       28,
+  HASTE_RANGED_RATING:      29,
+  HASTE_SPELL_RATING:       30,
+  HIT_RATING:               31,
+  CRIT_RATING:              32,
+  HIT_TAKEN_RATING:         33,
+  CRIT_TAKEN_RATING:        34,
+  RESILIENCE_RATING:        35,
+  HASTE_RATING:             36,
+  EXPERTISE_RATING:         37,
+  ATTACK_POWER:             38,
+  RANGED_ATTACK_POWER:      39,
+  FERAL_ATTACK_POWER:       40,
+  SPELL_HEALING_DONE:       41,
+  SPELL_DAMAGE_DONE:        42,
+  MANA_REGENERATION:        43,
+  ARMOR_PENETRATION_RATING: 44,
+  SPELL_POWER:              45,
+  HEALTH_REGEN:             46,
+  SPELL_PENETRATION:        47,
+  BLOCK_VALUE:              48,   
+  DAMAGE_MIN:               49,
+  DAMAGE_MAX:               50,
+  ARMOR:                    51,
+  RESIST_HOLY:              52,
+  RESIST_FIRE:              53,   
+  RESIST_NATURE:            54,
+  RESIST_FROST:             55,
+  RESIST_SHADOW:            56,
+  RESIST_ARCANE:            57,
+  EXPERTISE:                58,
+  MAX_BOT_ITEM_MOD:         59,
+  BOT_STAT_MOD_RESISTANCE_START: 51, // Assuming BOT_STAT_MOD_ARMOR is defined somewhere
+} as const;
+
+declare type BotStatTypeName = keyof typeof BotStatMap;
+declare type BotStatTypeNum = BotStatMap[BotStatTypeName];
+
+
+declare type ClassName =
+  | "WARRIOR"
+  | "PALADIN"
+  | "HUNTER"
+  | "ROGUE"
+  | "PRIEST"
+  | "DEATH_KNIGHT"
+  | "SHAMAN"
+  | "MAGE"
+  | "WARLOCK"
+  | "DRUID"
+  | "BLADE_MASTER"
+  | "SPHYNX"
+  | "ARCHMAGE"
+  | "DREADLORD"
+  | "SPELLBREAKER"
+  | "DARK_RANGER"
+  | "NECROMANCER"
+  | "SEA_WITCH"
+  | "CRYPT_LORD";
