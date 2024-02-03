@@ -195,6 +195,88 @@ declare const enum ItemEvents {
   ITEM_EVENT_ON_EXPIRE = 4, // (event, player, itemid) - Can return true
   ITEM_EVENT_ON_REMOVE = 5, // (event, player, item) - Can return true
 }
+
+// declare const enum BotEquipmentSlot {
+//    MAINHAND           = 0,
+//    OFFHAND            = 1,
+//    RANGED             = 2,
+//    HEAD               = 3,
+//    SHOULDERS          = 4,
+//    CHEST              = 5,
+//    WAIST              = 6,
+//    LEGS               = 7,
+//    FEET               = 8,
+//    WRIST              = 9,
+//    HANDS              = 10,
+//    BACK               = 11,
+//    BODY               = 12,
+//    FINGER1            = 13,
+//    FINGER2            = 14,
+//    TRINKET1           = 15,
+//    TRINKET2           = 16,
+//    NECK               = 17
+// }
+
+// declare const enum BotStatType {
+//    MANA                       = 0,
+//    HEALTH                     = 1,
+//    AGILITY                    = 3,
+//    STRENGTH                   = 4,
+//    INTELLECT                  = 5,
+//    SPIRIT                     = 6,
+//    STAMINA                    = 7,
+//    DEFENSE_SKILL_RATING       = 12,
+//    DODGE_RATING               = 13,
+//    PARRY_RATING               = 14,
+//    BLOCK_RATING               = 15,
+//    HIT_MELEE_RATING           = 16,
+//    HIT_RANGED_RATING          = 17,
+//    HIT_SPELL_RATING           = 18,
+//    CRIT_MELEE_RATING          = 19,
+//    CRIT_RANGED_RATING         = 20,
+//    CRIT_SPELL_RATING          = 21,
+//    HIT_TAKEN_MELEE_RATING     = 22,
+//    HIT_TAKEN_RANGED_RATING    = 23,
+//    HIT_TAKEN_SPELL_RATING     = 24,
+//    CRIT_TAKEN_MELEE_RATING    = 25,
+//    CRIT_TAKEN_RANGED_RATING   = 26,
+//    CRIT_TAKEN_SPELL_RATING    = 27,
+//    HASTE_MELEE_RATING         = 28,
+//    HASTE_RANGED_RATING        = 29,
+//    HASTE_SPELL_RATING         = 30,
+//    HIT_RATING                 = 31,
+//    CRIT_RATING                = 32,
+//    HIT_TAKEN_RATING           = 33,
+//    CRIT_TAKEN_RATING          = 34,
+//    RESILIENCE_RATING          = 35,
+//    HASTE_RATING               = 36,
+//    EXPERTISE_RATING           = 37,
+//    ATTACK_POWER               = 38,
+//    RANGED_ATTACK_POWER        = 39,
+//    FERAL_ATTACK_POWER         = 40,
+//    SPELL_HEALING_DONE         = 41,
+//    SPELL_DAMAGE_DONE          = 42,
+//    MANA_REGENERATION          = 43,
+//    ARMOR_PENETRATION_RATING   = 44,
+//    SPELL_POWER                = 45,
+//    HEALTH_REGEN               = 46,
+//    SPELL_PENETRATION          = 47,
+//    BLOCK_VALUE                = 48,   
+//    DAMAGE_MIN                 = 49,
+//    DAMAGE_MAX                 = 50,
+//    ARMOR                      = 51,
+//    RESIST_HOLY                = 52,
+//    RESIST_FIRE                = 53,   
+//    RESIST_NATURE              = 54,
+//    RESIST_FROST               = 55,
+//    RESIST_SHADOW              = 56,
+//    RESIST_ARCANE              = 57,
+//    EXPERTISE                  = 58,
+//    MAX_BOT_ITEM_MOD                        = 59,
+//    BOT_STAT_MOD_RESISTANCE_START           = BOT_STAT_MOD_ARMOR
+// }
+
+
 declare const enum PacketEvents {
   PACKET_EVENT_ON_PACKET_RECEIVE = 5, // (event, packet, player) - Player only if accessible. Can return false, newPacket
   PACKET_EVENT_ON_PACKET_RECEIVE_UNKNOWN = 6, // Not Implemented
@@ -750,6 +832,16 @@ declare class Creature extends Unit {
   AttackStart(target: Unit): void;
 
   /**
+   * Equip an Item to a bot in a given slot. This command will accept either a 
+   * a number representing the item's entryID or an Item object itself. If successful, 
+   * the function will return true, otherwise it will return false.
+   * @param item Item | number
+   * @param slot BotEquipmentSlot
+   * @returns boolean
+   */
+  BotEquipItem(item: Item | number, slot: BotEquipmentSlot): boolean;
+
+  /**
      * Make the [Creature] call for assistance in combat from other nearby [Creature]s.
      */
   CallAssistance(): void;
@@ -863,6 +955,83 @@ declare class Creature extends Unit {
      *   that is used as the aggro range instead.
      */
   GetAttackDistance(target: Unit): number;
+
+  /**
+   * Returns the bots average Item Level 
+   */
+  GetBotAverageItemLevel(): number;
+
+  /**
+   * Gets the bots class Id 
+   *     
+   * WARRIOR       = 1
+   * PALADIN       = 2
+   * HUNTER        = 3
+   * ROGUE         = 4
+   * PRIEST        = 5           
+   * DEATH_KNIGHT  = 6            
+   * SHAMAN        = 7            
+   * MAGE          = 8           
+   * WARLOCK       = 9           
+   * DRUID         = 10            
+   * BLADE_MASTER  = 11
+   * SPHYNX        = 12
+   * ARCHMAGE      = 13
+   * DREADLORD     = 14
+   * SPELLBREAKER  = 15
+   * DARK_RANGER   = 16
+   * NECROMANCER   = 17
+   * SEA_WITCH     = 18
+   * CRYPT_LORD    = 19
+   */
+  GetBotClass(): number;
+
+  /**
+   * This will return the currently equipped item in the specified slot for the
+   * given bot. If the slot is empty, it will return 
+   */
+  GetBotEquipment(slot: BotEquipmentSlotNum ): Item | undefined;
+
+  /**
+   * Returns the owner of the NPC bot if found otherwise returns undefined.
+   * Requires NPCBots Patch and Eluna NPCBots Branch
+   */
+  GetBotOwner(): Player | undefined; 
+
+  /**
+    * Roles are represented by a bitmask of the following values:
+    *
+    * NONE                             = 0
+    * TANK                             = 1
+    * TANK_OFF                         = 2
+    * DPS                              = 4
+    * HEAL                             = 8
+    * RANGED                           = 16
+    *
+    * PARTY                            = 32  //hidden
+    *
+    * GATHERING_MINING                 = 64
+    * GATHERING_HERBALISM              = 128
+    * GATHERING_SKINNING               = 256
+    * GATHERING_ENGINEERING            = 512
+    *
+    * AUTOLOOT                         = 1024  //not in mask
+    * AUTOLOOT_POOR                    = 2048
+    * AUTOLOOT_COMMON                  = 4096
+    * AUTOLOOT_UNCOMMON                = 8192
+    * AUTOLOOT_RARE                    = 16384
+    * AUTOLOOT_EPIC                    = 32768
+    * AUTOLOOT_LEGENDARY               = 65536
+    *
+    * MAX_ROLE                         = 131072
+    */
+  GetBotRoles(): number;
+
+  /**
+   * Will return a bots stat based on the stat id passed in see BotStatType for the list of stats
+   * that can be returned. 
+   */
+  GetBotStat(stat: BotStatTypeNum): number;
 
   /**
      * Returns the delay between when the [Creature] dies and when its body despawns.
@@ -1056,6 +1225,18 @@ declare class Creature extends Unit {
   HasSpellCooldown(spellId: number): boolean;
 
   /**
+   * Returns true if the bot is set to be a tank role
+   * @returns {boolean}
+   */
+  IsBotTank(): boolean;
+
+  /**
+   * Returns true if the bot is set to offtank role
+   * @returns {boolean}
+   */
+  IsBotOffTank(): boolean;
+
+  /**
      * Returns `true` if the [Creature] is a civilian,
      *   and returns `false` otherwise.
      */
@@ -1079,6 +1260,12 @@ declare class Creature extends Unit {
   IsElite(): boolean;
 
   /**
+   * Is bot available to be hired by a player
+   * @returns {boolean}
+   */
+  IsFreeBot(): boolean;
+
+  /**
      * Returns `true` if the [Creature] is a city guard,
      *   and returns `false` otherwise.
      */
@@ -1089,6 +1276,13 @@ declare class Creature extends Unit {
      *   and returns `false` otherwise.
      */
   IsInEvadeMode(): boolean;
+
+  /**
+   * Returns `true` if the [Creature] is a NPCBot
+   * (Only works on servers with NPCBots enabled and Eluna Mod AraxiaOnline)
+   */
+  IsNPCBot(): boolean; 
+  
 
   /**
      * Returns `true` if the [Creature] is the leader of a player faction,
