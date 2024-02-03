@@ -186,6 +186,11 @@ To save you pain of finding the sharp edges yourself here are the ones I know ab
 * __Time translations__ - no Date Object, it doesnt work.  I have a lib of a few TS translations that will polyfill some of the common needs so you can do things with Game/Server time.  Will move into common libs once I have vetted them out more. 
 
 ## Updates
+**Jan 31 2024 v1.7.0**
+* FEATURE: Added support for imports in Typescript for AIO client code.  
+* FEATURE: Added new declarations related to NPCBots / Creatures
+* FEATURE: Updated declaration deps for WoW Wotlk new UI functions. 
+
 **Dec 21, 2023 v1.6.7**
 * CHORE: Removed typeroots not needed in tsconfig.module.json anymore 
 
