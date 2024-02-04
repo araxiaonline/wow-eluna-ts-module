@@ -186,6 +186,12 @@ To save you pain of finding the sharp edges yourself here are the ones I know ab
 * __Time translations__ - no Date Object, it doesnt work.  I have a lib of a few TS translations that will polyfill some of the common needs so you can do things with Game/Server time.  Will move into common libs once I have vetted them out more. 
 
 ## Updates
+**Feb 4, 2024 1.9.0**
+* BUG: Rewrote AIO TSTL Plugin to use transpileFiles from transpileStrings because transpileStrings has an issue that has been submitted. 
+
+**Feb 3, 2024 1.8.0**
+* UPDATES: More updates to TypeScript AIO Client transpile plugin
+
 **Jan 31 2024 v1.7.0**
 * FEATURE: Added support for imports in Typescript for AIO client code.  
 * FEATURE: Added new declarations related to NPCBots / Creatures
