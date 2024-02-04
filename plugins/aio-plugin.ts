@@ -116,7 +116,6 @@ function afterPrint(
       const sourceCode = readFileSync(file.fileName, "utf-8");           
       const tmpPath = mkdtempSync(path.join(os.tmpdir(), 'ets-compile'));           
 
-      console.log(options); 
       tstl.transpileFiles([file.fileName],{        
         outDir: tmpPath, 
         luaLibImport: tstl.LuaLibImportKind.Inline, 
