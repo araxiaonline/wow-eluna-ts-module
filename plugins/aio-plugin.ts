@@ -111,7 +111,7 @@ function afterPrint(
   for (const file of result) {
     const mapKey = keyifyFile(file.fileName, program);
 
-    if (file.fileName.includes("botmgr.client.ts")) {
+    if (file.fileName.includes(".client.ts")) {
 
       const sourceCode = readFileSync(file.fileName, "utf-8");           
       const tmpPath = mkdtempSync(path.join(os.tmpdir(), 'ets-compile'));           
