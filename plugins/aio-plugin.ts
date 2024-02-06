@@ -1,7 +1,7 @@
 import * as ts from "typescript";
 import * as tstl from "typescript-to-lua";
 import * as path from "node:path"; 
-import { readFileSync, writeFileSync, ensureDirSync, mkdtempSync } from "fs-extra";
+import { readFileSync, existsSync, ensureDirSync, mkdtempSync } from "fs-extra";
 import * as os from "node:os";
 
 require('dotenv').config({ 
@@ -13,7 +13,7 @@ type RequiredDefintion = {
   variable: string
 }
 
-const requires: Map<string, RequiredDefintion> = new Map();
+const requires: Map<string, RequiredDefintion[]> = new Map();
 const resolvedModules: string[] = [];
 
 /**
@@ -57,8 +57,9 @@ function buildSourceMap(files: tstl.EmitFile[], program: ts.Program) {
  */
 function resolveRequire(modulepath: string, sourceMap: Map<string, string>, code?: string): string {
 
+  
   // de-lua-ify the module name to a path. 
-  let filepath =  modulepath.replace(".", "/") + ''; 
+  let filepath =  modulepath.replace(/\./g, "/"); 
   let output: string = code || ''; 
 
   // skip resolved modules only want to include them once to avoid namespace issues. 
@@ -68,18 +69,24 @@ function resolveRequire(modulepath: string, sourceMap: Map<string, string>, code
   }
 
   // have to check if the file we are resolving also has requires that need to be resolved. 
-  const filecode = sourceMap.get(filepath) ?? ''; 
-  if(requireSymbol(filecode)) {    
-    for(const line of filecode.split("\n")) {
-      let match = requireSymbol(line);
-      if(match) {
-        output += resolveRequire(match[2], sourceMap, output);
-      }
-    }
-  } else {
-    output += filecode;
-  }
+  let filecode = sourceMap.get(filepath) ?? ''; 
 
+  if(requireSymbol(filecode)) { 
+
+    for(const line of filecode.split("\n")) {
+      if(line.includes("lualib")) {
+        filecode = filecode.replace(line+"\n", '');
+        continue; 
+      }
+      const [variable, module] = requireSymbol(line) ?? ["", ""];
+    
+      if(module) {        
+        output += resolveRequire(module, sourceMap, output);                        
+      }
+    } 
+    
+  } 
+  output += filecode;  
   resolvedModules.push(modulepath);
 
   return output;  
@@ -114,52 +121,54 @@ function afterPrint(
     if (file.fileName.includes(".client.ts")) {
 
       const sourceCode = readFileSync(file.fileName, "utf-8");           
-      const tmpPath = mkdtempSync(path.join(os.tmpdir(), 'ets-compile'));           
+      const tmpPath = path.join(os.tmpdir(), 'ets-compile');           
 
-      tstl.transpileFiles([file.fileName],{        
-        outDir: tmpPath, 
+      const result = tstl.transpileFiles([file.fileName],{        
+        outDir: tmpPath,         
         luaLibImport: tstl.LuaLibImportKind.Inline, 
+        luaTarget: tstl.LuaTarget.Lua52,
         strict: false,
-        target: ts.ScriptTarget.ESNext,        
-        skipLibCheck: true,        
+        target: ts.ScriptTarget.ESNext,           
+        skipLibCheck: true,             
         noHeader: true,   
-        lib: [ 'lib.esnext.d.ts', 'lib.dom.d.ts' ],
-        moduleResolution: ts.ModuleResolutionKind.Node16,
+        lib: [ 'lib.esnext.d.ts', 'lib.dom.d.ts' ],        
         types: [          
           'lua-types/5.2',
           '@typescript-to-lua/language-extensions',
           'wow-eluna-ts-module',
           '@araxiaonline/wow-wotlk-declarations',
           'node'
-        ]                     
-        // luaTarget: tstl.LuaTarget.Lua52        
+        ],                            
       });
-      // const transpiled = tstl.transpileString(
-      //   fs.readFileSync(file.fileName, "utf-8"),
-      //   {
-      //     luaLibImport: tstl.LuaLibImportKind.Inline,
-      //     luaTarget: tstl.LuaTarget.Lua52,
-      //     // luaBundle: "none",
-      //     outDir: tstl.getProjectRoot(program),
-      //     noImplicitSelf: true,
-      //     noHeader: true,          
-      //   }
-      // );
+      
+      result.diagnostics.forEach((d) => {
+        console.error(`\x1b[31mTRANSPILE ERROR: ${d.messageText}\x1b[0m`);        
+      });
+      
       const luaPath = file.fileName.replace(tstl.getSourceDir(program), '').replace('.ts', '.lua'); 
-      const transpiled  = readFileSync(path.join(tmpPath,luaPath), 'utf-8');       
-      file.code = transpiled ?? file.code; 
+      const fallback = path.join(tmpPath, path.basename(file.fileName.replace('.ts', '.lua')));
+
+      let transpiled:string | null = null; 
+      if(existsSync(path.join(tmpPath,luaPath))) {
+        transpiled = readFileSync(path.join(tmpPath,luaPath), 'utf-8');
+      } else if(existsSync(fallback)) {
+        transpiled = readFileSync(fallback, 'utf-8');
+      } else {
+        console.error(`\x1b[31mTRANSPILE ERROR: ${fallback} not found in ${tmpPath}\x1b[0m`);
+      }
+        
+      file.code = transpiled ?? file.code;       
 
       for (const line of file.code.split("\n")) {
         const [variable, module] = requireSymbol(line) ?? ["", ""];
 
         if (module && module !== "AIO") {
-          file.code = file.code.replace(line, `local ____${variable} = {}\n-- INLINE(${module})`);          
-          requires.set(mapKey, {
-            module,
-            variable,
-          });
-        }
-      }
+          file.code = file.code.replace(line, `local ____${variable} = {}\n-- INLINE(${module})`);      
+          
+          const currentRequires = requires.get(mapKey) ?? [];
+          requires.set(mapKey, [...currentRequires, { module, variable }]);                                
+        }        
+      }         
     }
   }
 }
@@ -213,14 +222,17 @@ const plugin: tstl.Plugin = {
         // Is targetted for AIO Client. 
         if(file.code.includes("if not AIO.AddAddon() then")) {
                     
-          requires.forEach( (requiredModule, caller) => {
+          requires.forEach( (requiredModules: RequiredDefintion[], caller) => {
 
             if(mapKey !== caller) {
               return; 
             }
             
-            const moduleCode = resolveExports(resolveRequire(requiredModule.module, sourceMap), requiredModule.variable); 
-            file.code = file.code.replace(`-- INLINE(${requiredModule.module})\n`, `-- INLINE(${requiredModule.module})\n` + moduleCode); 
+            requiredModules.forEach((requiredModule) => {
+              
+              const moduleCode = resolveExports(resolveRequire(requiredModule.module, sourceMap), requiredModule.variable);               
+              file.code = file.code.replace(`-- INLINE(${requiredModule.module})\n`, `-- INLINE(${requiredModule.module})\n` + moduleCode); 
+            });           
                         
           }); 
         }
