@@ -842,6 +842,19 @@ declare class Creature extends Unit {
   BotEquipItem(item: Item | number, slot: BotEquipmentSlot): boolean;
 
   /**
+   * This will perform a check to see if the bot can equip the item in the given slot.
+   * @param item Item entry id
+   * @param slot BotEquipmentSlot
+   */
+  BotCanEquipItem(item: number, slot: BotEquipmentSlot): boolean;
+
+  /**
+   * Unquips an item from a bot in a given slot. If successful, the function will return true,
+   * @param slot BotEquipmentSlot
+   */
+  BotUnequipItem(slot: BotEquipmentSlot): boolean;
+
+  /**
      * Make the [Creature] call for assistance in combat from other nearby [Creature]s.
      */
   CallAssistance(): void;
@@ -1032,6 +1045,8 @@ declare class Creature extends Unit {
    * that can be returned. 
    */
   GetBotStat(stat: BotStatTypeNum): number;
+
+
 
   /**
      * Returns the delay between when the [Creature] dies and when its body despawns.
@@ -2876,7 +2891,7 @@ declare class EMap {
      *         TEAM_NEUTRAL = 2
      *     };
      */
-  GetPlayers(team: TeamId): number;
+  GetPlayers(team: TeamId): number[];
 
   /**
      * Returns a [WorldObject] by its GUID from the map if it is spawned.
@@ -5651,7 +5666,7 @@ declare class WorldObject extends EObject {
     entryId?: number,
     hostile?: number,
     dead?: number,
-  ): number;
+  ): Creature[];
 
   /**
      * Returns the distance from this [WorldObject] to another [WorldObject], or from this [WorldObject] to a point in 3d space.
