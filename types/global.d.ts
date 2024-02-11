@@ -5970,7 +5970,7 @@ declare class WorldObject extends EObject {
 
   /**
      * Registers a timed event to the [WorldObject]
-     * When the passed function is called, the parameters `(eventId, delay, repeats, worldobject)` are passed to it.
+     * When the passed function is called, the parameters `(delay, repeats, worldobject)` are passed to it.
      * Repeats will decrease on each call if the event does not repeat indefinitely
      * Note that for [Creature] and [GameObject] the timed event timer ticks only if the creature is in sight of someone
      * For all [WorldObject]s the timed events are removed when the object is destoryed. This means that for example a [Player]'s events are removed on logout.
@@ -5979,13 +5979,24 @@ declare class WorldObject extends EObject {
      *     end
      *     worldobject:RegisterEvent(Timed, 1000, 5) -- do it after 1 second 5 times
      *     worldobject:RegisterEvent(Timed, {1000, 10000}, 0) -- do it after 1 to 10 seconds forever
+     * 
+     * Example: 
+     * creature.RegisterEvent((delay:number, repeats:number, creature: Creature) => {
+     *     // do something
+     * }, 1000, 2); // do it after 1 second 2 times
+     * 
+     * creature.RegisterEvent((delay:number, repeats:number, creature: Creature) => {
+     *   // do something
+     * }, {1000,10000}, 0);  // do it after 1 to 10 seconds forever 
+     *   
      */
   RegisterEvent(
-    func: (...args: any[]) => any,
-    delay: number,
-    delaytable: number,
+    func: <T extends WorldObject>(delay: number | [number, number], repeats: number, worldobj: typeof T) => any,
+    delay: number | [number, number],
     repeats?: number,
   ): number;
+
+  Re
 
   /**
      * Removes the timed event from a [WorldObject] by the specified event ID
