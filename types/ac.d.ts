@@ -283,7 +283,7 @@ declare const BotEquipmentSlotMap = {
 } as const;
 
 declare type BotEquipmentSlotName = keyof typeof BotEquipmentSlotMap; 
-declare type BotEquipmentSlotNum = BotEquipmentSlotMap[BotEquipmentSlotName];
+declare type BotEquipmentSlotNum = typeof BotEquipmentSlotMap[BotEquipmentSlotName];
 
 declare const BotStatMap = {
   MANA:                      0,

@@ -852,7 +852,7 @@ declare class Creature extends Unit {
    * Unquips an item from a bot in a given slot. If successful, the function will return true,
    * @param slot BotEquipmentSlot
    */
-  BotUnequipItem(slot: BotEquipmentSlot): boolean;
+   BotUnequipBotItem(slot: number): boolean;
 
   /**
      * Make the [Creature] call for assistance in combat from other nearby [Creature]s.
@@ -1046,7 +1046,47 @@ declare class Creature extends Unit {
    */
   GetBotStat(stat: BotStatTypeNum): number;
 
+  /**
+   * Returns a complete dump of bot info that is the same data from .npcbot info 
+   */
+  GetBotDump(): string; 
 
+  /**
+   *   WARRIOR_ARMS         : 1,
+   * WARRIOR_FURY         : 2,
+   * WARRIOR_PROTECTION   : 3,
+   * PALADIN_HOLY         : 4,
+   * PALADIN_PROTECTION   : 5,
+   * PALADIN_RETRIBUTION  : 6,
+   * HUNTER_BEASTMASTERY  : 7,
+   * HUNTER_MARKSMANSHIP  : 8,
+   * HUNTER_SURVIVAL      : 9,
+   * ROGUE_ASSASSINATION  : 10,
+   * ROGUE_COMBAT         : 11,
+   * ROGUE_SUBTLETY       : 12,
+   * PRIEST_DISCIPLINE    : 13,
+   * PRIEST_HOLY          : 14,
+   * PRIEST_SHADOW        : 15,
+   * DK_BLOOD             : 16,
+   * DK_FROST             : 17,
+   * DK_UNHOLY            : 18,
+   * SHAMAN_ELEMENTAL     : 19,
+   * SHAMAN_ENHANCEMENT   : 20,
+   * SHAMAN_RESTORATION   : 21,
+   * MAGE_ARCANE          : 22,
+   * MAGE_FIRE            : 23,
+   * MAGE_FROST           : 24,
+   * WARLOCK_AFFLICTION   : 25,
+   * WARLOCK_DEMONOLOGY   : 26,
+   * WARLOCK_DESTRUCTION  : 27,
+   * DRUID_BALANCE        : 28,
+   * DRUID_FERAL          : 29,
+   * DRUID_RESTORATION    : 30,
+   * DEFAULT              : 31,
+   * BEGIN                : 1,  
+   * END                  : 31 
+   */
+  GetTalentSpec(): number;
 
   /**
      * Returns the delay between when the [Creature] dies and when its body despawns.
