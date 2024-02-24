@@ -1,0 +1,345 @@
+{
+    "Server Packet Receive": {
+        "prefix": "server_packet_receive",
+        "body": [
+            "const $1: server_event_on_packet_receive_any = (event: number, packet: WorldPacket, player?: Player): boolean | WorldPacket => {",
+            "\t// Implementation",
+            "\treturn false;",
+            "\treturn <WorldPacket>packet;",
+            "};",
+            "",
+            "// Register Server Event on Packet Receive",
+            "RegisterServerEvent(ServerEvents.SERVER_EVENT_ON_PACKET_RECEIVE, (...args) => $1(...args));"
+        ],
+        "description": "Server Event on Packet Receive",
+        "scope": "typescript"
+    },
+    "Server Packet Send": {
+        "prefix": "server_packet_send",
+        "body": [
+            "const $1: server_event_on_packet_send_any = (event: number, packet: WorldPacket, player?: Player): boolean | WorldPacket => {",
+            "\t// Implementation",
+            "\treturn false;",
+            "\treturn <WorldPacket>packet;",
+            "};",
+            "",
+            "// Register Server Event on Packet Send",
+            "RegisterServerEvent(ServerEvents.SERVER_EVENT_ON_PACKET_SEND, (...args) => $1(...args));"
+        ],
+        "description": "Server Event on Packet Send",
+        "scope": "typescript"
+    },
+    "Server Open State Change": {
+        "prefix": "server_open_state_change",
+        "body": [
+            "const $1: world_event_on_open_state_change = (event: number, open: boolean) => {",
+            "\t// Implementation",
+            "};",
+            "",
+            "// Register Server Event on Open State Change",
+            "RegisterServerEvent(ServerEvents.WORLD_EVENT_ON_OPEN_STATE_CHANGE, (...args) => $1(...args));"
+        ],
+        "description": "World Event on Open State Change",
+        "scope": "typescript"
+    },
+    "Server Config Load": {
+        "prefix": "server_config_load",
+        "body": [
+            "const $1: world_event_on_config_load = (event: number, reload: boolean) => {",
+            "\t// Implementation",
+            "};",
+            "",
+            "// Register Server Event on Config Load",
+            "RegisterServerEvent(ServerEvents.WORLD_EVENT_ON_CONFIG_LOAD, (...args) => $1(...args));"
+        ],
+        "description": "World Event on Config Load",
+        "scope": "typescript"
+    },
+    "Server Shutdown Init": {
+        "prefix": "server_shutdown_init",
+        "body": [
+            "const $1: world_event_on_shutdown_init = (event: number, code: number, mask: number) => {",
+            "\t// Implementation",
+            "};",
+            "",
+            "// Register Server Event on Shutdown Init",
+            "RegisterServerEvent(ServerEvents.WORLD_EVENT_ON_SHUTDOWN_INIT, (...args) => $1(...args));"
+        ],
+        "description": "World Event on Shutdown Init",
+        "scope": "typescript"
+    },
+    "Server Shutdown Cancel": {
+        "prefix": "server_shutdown_cancel",
+        "body": [
+            "const $1: world_event_on_shutdown_cancel = (event: number) => {",
+            "\t// Implementation",
+            "};",
+            "",
+            "// Register Server Event on Shutdown Cancel",
+            "RegisterServerEvent(ServerEvents.WORLD_EVENT_ON_SHUTDOWN_CANCEL, (...args) => $1(...args));"
+        ],
+        "description": "World Event on Shutdown Cancel",
+        "scope": "typescript"
+    },
+    "Server Update": {
+        "prefix": "server_update",
+        "body": [
+            "const $1: world_event_on_update = (event: number, diff: number) => {",
+            "\t// Implementation",
+            "};",
+            "",
+            "// Register Server Event on Update",
+            "RegisterServerEvent(ServerEvents.WORLD_EVENT_ON_UPDATE, (...args) => $1(...args));"
+        ],
+        "description": "World Event on Update",
+        "scope": "typescript"
+    },
+    "Server Startup": {
+        "prefix": "server_startup",
+        "body": [
+            "const $1: world_event_on_startup = (event: number) => {",
+            "\t// Implementation",
+            "};",
+            "",
+            "// Register Server Event on Startup",
+            "RegisterServerEvent(ServerEvents.WORLD_EVENT_ON_STARTUP, (...args) => $1(...args));"
+        ],
+        "description": "World Event on Startup",
+        "scope": "typescript"
+    },
+    "Server Shutdown": {
+        "prefix": "server_shutdown",
+        "body": [
+            "const $1: world_event_on_shutdown = (event: number) => {",
+            "\t// Implementation",
+            "};",
+            "",
+            "// Register Server Event on Shutdown",
+            "RegisterServerEvent(ServerEvents.WORLD_EVENT_ON_SHUTDOWN, (...args) => $1(...args));"
+        ],
+        "description": "World Event on Shutdown",
+        "scope": "typescript"
+    },
+    "Server Lua State Open": {
+        "prefix": "server_lua_state_open",
+        "body": [
+            "const $1: eluna_event_on_lua_state_open = (event: number) => {",
+            "\t// Implementation",
+            "};",
+            "",
+            "// Register Server Event on Lua State Open",
+            "RegisterServerEvent(ServerEvents.ELUNA_EVENT_ON_LUA_STATE_OPEN, (...args) => $1(...args));"
+        ],
+        "description": "Eluna Event on Lua State Open",
+        "scope": "typescript"
+    },
+    "Server Delete Creature": {
+        "prefix": "server_delete_creature",
+        "body": [
+            "const $1: world_event_on_delete_creature = (event: number, creature: Creature) => {",
+            "\t// Implementation",
+            "};",
+            "",
+            "// Register Server Event on Delete Creature",
+            "RegisterServerEvent(ServerEvents.WORLD_EVENT_ON_DELETE_CREATURE, (...args) => $1(...args));"
+        ],
+        "description": "World Event on Delete Creature",
+        "scope": "typescript"
+    },
+    "Server Delete Gameobject": {
+        "prefix": "server_delete_gameobject",
+        "body": [
+            "const $1: world_event_on_delete_gameobject = (event: number, gameObject: GameObject) => {",
+            "\t// Implementation",
+            "};",
+            "",
+            "// Register Server Event on Delete Gameobject",
+            "RegisterServerEvent(ServerEvents.WORLD_EVENT_ON_DELETE_GAMEOBJECT, (...args) => $1(...args));"
+        ],
+        "description": "World Event on Delete Gameobject",
+        "scope": "typescript"
+    },
+    "Server Game Event Start": {
+        "prefix": "server_game_event_start",
+        "body": [
+            "const $1: game_event_start = (event: number, gameEventId: number) => {",
+            "\t// Implementation",
+            "};",
+            "",
+            "// Register Server Event on Game Event Start",
+            "RegisterServerEvent(ServerEvents.GAME_EVENT_START, (...args) => $1(...args));"
+        ],
+        "description": "Game Event Start",
+        "scope": "typescript"
+    },
+    "Server Game Event Stop": {
+        "prefix": "server_game_event_stop",
+        "body": [
+            "const $1: game_event_stop = (event: number, gameEventId: number) => {",
+            "\t// Implementation",
+            "};",
+            "",
+            "// Register Server Event on Game Event Stop",
+            "RegisterServerEvent(ServerEvents.GAME_EVENT_STOP, (...args) => $1(...args));"
+        ],
+        "description": "Game Event Stop",
+        "scope": "typescript"
+    },
+    "EMap Event on Create": {
+        "prefix": "server_map_on_create",
+        "body": [
+            "const $1: map_event_on_create = (event: number, map: EMap) => {",
+            "\t// Implementation",
+            "};",
+            "",
+            "// Register Map Event on Create",
+            "RegisterServerEvent(ServerEvents.MAP_EVENT_ON_CREATE, (...args) => $1(...args));"
+        ],
+        "description": "Map Event on Create",
+        "scope": "typescript"
+    },
+    "Map Event on Destroy": {
+        "prefix": "server_map_on_destroy",
+        "body": [
+            "const $1: map_event_on_destroy = (event: number, map: EMap) => {",
+            "\t// Implementation",
+            "};",
+            "",
+            "// Register Map Event on Destroy",
+            "RegisterServerEvent(ServerEvents.MAP_EVENT_ON_DESTROY, (...args) => $1(...args));"
+        ],
+        "description": "Map Event on Destroy",
+        "scope": "typescript"
+    },
+    "Map Event on Player Enter": {
+        "prefix": "server_map_on_player_enter",
+        "body": [
+            "const $1: map_event_on_player_enter = (event: number, map: EMap, player: Player) => {",
+            "\t// Implementation",
+            "};",
+            "",
+            "// Register Map Event on Player Enter",
+            "RegisterServerEvent(ServerEvents.MAP_EVENT_ON_PLAYER_ENTER, (...args) => $1(...args));"
+        ],
+        "description": "Map Event on Player Enter",
+        "scope": "typescript"
+    },
+    "Map Event on Player Leave": {
+        "prefix": "server_map_on_player_leave",
+        "body": [
+            "const $1: map_event_on_player_leave = (event: number, map: EMap, player: Player) => {",
+            "\t// Implementation",
+            "};",
+            "",
+            "// Register Map Event on Player Leave",
+            "RegisterServerEvent(ServerEvents.MAP_EVENT_ON_PLAYER_LEAVE, (...args) => $1(...args));"
+        ],
+        "description": "Map Event on Player Leave",
+        "scope": "typescript"
+    },
+    "Map Event on Update": {
+        "prefix": "server_map_on_update",
+        "body": [
+            "const $1: map_event_on_update = (event: number, map: EMap, diff: number) => {",
+            "\t// Implementation",
+            "};",
+            "",
+            "// Register Map Event on Update",
+            "RegisterServerEvent(ServerEvents.MAP_EVENT_ON_UPDATE, (...args) => $1(...args));"
+        ],
+        "description": "Map Event on Update",
+        "scope": "typescript"
+    },
+    "Trigger Event on Trigger": {
+        "prefix": "server_trigger",
+        "body": [
+            "const $1: trigger_event_on_trigger = (event: number, player: Player, triggerId: number): boolean => {",
+            "\t// Implementation",
+            "\treturn false;",
+            "};",
+            "",
+            "// Register Trigger Event on Trigger",
+            "RegisterServerEvent(ServerEvents.TRIGGER_EVENT_ON_TRIGGER, (...args) => $1(...args));"
+        ],
+        "description": "Trigger Event on Trigger",
+        "scope": "typescript"
+    },
+    "Weather Event on Change": {
+        "prefix": "weather_on_change",
+        "body": [
+            "const $1: weather_event_on_change = (event: number, zoneId: number, state: WeatherState, grade: number) => {",
+            "\t// Implementation",
+            "};",
+            "",
+            "// Register Weather Event on Change",
+            "RegisterServerEvent(ServerEvents.WEATHER_EVENT_ON_CHANGE, (...args) => $1(...args));"
+        ],
+        "description": "Weather Event on Change",
+        "scope": "typescript"
+    },
+    "Auction Event on Add": {
+        "prefix": "auction_on_add",
+        "body": [
+            "const $1: auction_event_on_add = (event: number, auctionId: number, owner: Player, item: Item, expireTime: number, buyout: number, startBid: number, currentBid: number, bidderGUIDLow: number) => {",
+            "\t// Implementation",
+            "};",
+            "",
+            "// Register Auction Event on Add",
+            "RegisterServerEvent(ServerEvents.AUCTION_EVENT_ON_ADD, (...args) => $1(...args));"
+        ],
+        "description": "Auction Event on Add",
+        "scope": "typescript"
+    },
+    "Auction Event on Remove": {
+        "prefix": "auction_on_remove",
+        "body": [
+            "const $1: auction_event_on_remove = (event: number, auctionId: number, owner: Player, item: Item, expireTime: number, buyout: number, startBid: number, currentBid: number, bidderGUIDLow: number) => {",
+            "\t// Implementation",
+            "};",
+            "",
+            "// Register Auction Event on Remove",
+            "RegisterServerEvent(ServerEvents.AUCTION_EVENT_ON_REMOVE, (...args) => $1(...args));"
+        ],
+        "description": "Auction Event on Remove",
+        "scope": "typescript"
+    },
+    "Auction Event on Successful": {
+        "prefix": "auction_on_successful",
+        "body": [
+            "const $1: auction_event_on_successful = (event: number, auctionId: number, owner: Player, item: Item, expireTime: number, buyout: number, startBid: number, currentBid: number, bidderGUIDLow: number) => {",
+            "\t// Implementation",
+            "};",
+            "",
+            "// Register Auction Event on Successful",
+            "RegisterServerEvent(ServerEvents.AUCTION_EVENT_ON_SUCCESSFUL, (...args) => $1(...args));"
+        ],
+        "description": "Auction Event on Successful",
+        "scope": "typescript"
+    },
+    "Auction Event on Expire": {
+        "prefix": "auction_on_expire",
+        "body": [
+            "const $1: auction_event_on_expire = (event: number, auctionId: number, owner: Player, item: Item, expireTime: number, buyout: number, startBid: number, currentBid: number, bidderGUIDLow: number) => {",
+            "\t// Implementation",
+            "};",
+            "",
+            "// Register Auction Event on Expire",
+            "RegisterServerEvent(ServerEvents.AUCTION_EVENT_ON_EXPIRE, (...args) => $1(...args));"
+        ],
+        "description": "Auction Event on Expire",
+        "scope": "typescript"
+    },
+    "AddOn Event on Message": {
+        "prefix": "addon_on_message",
+        "body": [
+            "const $1: addon_event_on_message = (event: number, sender: string, type: AddonMessageType, prefix: string, msg: string, target?: string) => {",
+            "\t// Implementation",
+            "};",
+            "",
+            "// Register AddOn Event on Message",
+            "RegisterServerEvent(ServerEvents.ADDON_EVENT_ON_MESSAGE, (...args) => $1(...args));"
+        ],
+        "description": "AddOn Event on Message",
+        "scope": "typescript"
+    }
+}

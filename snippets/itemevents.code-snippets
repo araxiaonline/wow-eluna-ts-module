@@ -31,7 +31,7 @@
       "body": [
         "const $1: item_event_on_quest_accept = (event: number, player: Player, item: Item, quest: Quest): boolean => {",
         "\t// Implementation",
-        "\treturn true; // Return true",
+        "\treturn false; // Returning true will stop the action from happening",
         "};",
         "",
         "// Register",
@@ -45,7 +45,7 @@
       "body": [
         "const $1: item_event_on_expire = (event: number, player: Player, itemId: number): boolean => {",
         "\t// Implementation",
-        "\treturn true; // Return true",
+        "\treturn false; // Returning true will stop the action from happening",
         "};",
         "",
         "// Register",
@@ -59,7 +59,7 @@
       "body": [
         "const $1: item_event_on_remove = (event: number, player: Player, item: Item): boolean => {",
         "\t// Implementation",
-        "\treturn true; // Return true",
+        "\treturn false; // Returning true will stop the action from happening",
         "};",
         "",
         "// Register",
