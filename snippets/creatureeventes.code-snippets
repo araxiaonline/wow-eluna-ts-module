@@ -1,0 +1,398 @@
+{
+    "Creature Enter Combat": {
+      "prefix": "creature_enter_combat",
+      "body": [
+        "const $1: creature_event_on_enter_combat = (event: number, creature: Creature, target: Creature): boolean => {",
+        "\t// Implementation",
+        "\treturn false; // return true to stop normal action",
+        "};",
+        "",
+        "// Register Creature Event on Enter Combat",
+        "RegisterCreatureEvent(${2:MyCreatureEntry}, CreatureEvents.CREATURE_EVENT_ON_ENTER_COMBAT, (...args) => $1(...args));"
+      ],
+      "description": "Creature Enter Combat",
+      "scope": "typescript"
+    },
+    "Creature Leave Combat": {
+      "prefix": "creature_leave_combat",
+      "body": [
+        "const $1: creature_event_on_leave_combat = (event: number, creature: Creature): boolean => {",
+        "\t// Implementation",
+        "\treturn false; // return true to stop normal action",
+        "};",
+        "",
+        "// Register Creature Event on Leave Combat",
+        "RegisterCreatureEvent(${2:MyCreatureEntry}, CreatureEvents.CREATURE_EVENT_ON_LEAVE_COMBAT, (...args) => $1(...args));"
+      ],
+      "description": "Creature Leave Combat",
+      "scope": "typescript"
+    },
+    "Creature Target Died": {
+      "prefix": "creature_target_died",
+      "body": [
+        "const $1: creature_event_on_target_died = (event: number, creature: Creature, victim: Creature): boolean => {",
+        "\t// Implementation",
+        "\treturn false; // return true to stop normal action",
+        "};",
+        "",
+        "// Register Creature Event on Target Died",
+        "RegisterCreatureEvent(${2:MyCreatureEntry}, CreatureEvents.CREATURE_EVENT_ON_TARGET_DIED, (...args) => $1(...args));"
+      ],
+      "description": "Creature Target Died",
+      "scope": "typescript"
+    },
+    "Creature Died": {
+      "prefix": "creature_died",
+      "body": [
+        "const $1: creature_event_on_died = (event: number, creature: Creature, killer: Creature): boolean => {",
+        "\t// Implementation",
+        "\treturn false; // return true to stop normal action",
+        "};",
+        "",
+        "// Register Creature Event on Died",
+        "RegisterCreatureEvent(${2:MyCreatureEntry}, CreatureEvents.CREATURE_EVENT_ON_DIED, (...args) => $1(...args));"
+      ],
+      "description": "Creature Died",
+      "scope": "typescript"
+    },
+    "Creature Spawn": {
+      "prefix": "creature_spawn",
+      "body": [
+        "const $1: creature_event_on_spawn = (event: number, creature: Creature): boolean => {",
+        "\t// Implementation",
+        "\treturn false; // return true to stop normal action",
+        "};",
+        "",
+        "// Register Creature Event on Spawn",
+        "RegisterCreatureEvent(${2:MyCreatureEntry}, CreatureEvents.CREATURE_EVENT_ON_SPAWN, (...args) => $1(...args));"
+      ],
+      "description": "Creature Spawn",
+      "scope": "typescript"
+    },
+    "Creature Reach Waypoint": {
+      "prefix": "creature_reach_waypoint",
+      "body": [
+        "const $1: creature_event_on_reach_wp = (event: number, creature: Creature, type: number, id: number): boolean => {",
+        "\t// Implementation",
+        "\treturn false;",
+        "};",
+        "",
+        "// Register Creature Event on Reach Waypoint",
+        "RegisterCreatureEvent(${2:MyCreatureEntry}, CreatureEvents.CREATURE_EVENT_ON_REACH_WP, (...args) => $1(...args));"
+      ],
+      "description": "Creature Reach Waypoint",
+      "scope": "typescript"
+    },
+    "Creature AI Update": {
+      "prefix": "creature_ai_update",
+      "body": [
+        "const $1: creature_event_on_aiupdate = (event: number, creature: Creature, diff: number): boolean => {",
+        "\t// Implementation",
+        "\treturn false; // return true to stop normal action",
+        "};",
+        "",
+        "// Register Creature Event on AI Update",
+        "RegisterCreatureEvent(${2:MyCreatureEntry}, CreatureEvents.CREATURE_EVENT_ON_AIUPDATE, (...args) => $1(...args));"
+      ],
+      "description": "Creature AI Update",
+      "scope": "typescript"
+    },
+    "Creature Receive Emote": {
+      "prefix": "creature_receive_emote",
+      "body": [
+        "const $1: creature_event_on_receive_emote = (event: number, creature: Creature, player: Player, emoteId: number): boolean => {",
+        "\t// Implementation",
+        "\treturn false; // return true to stop normal action",
+        "};",
+        "",
+        "// Register Creature Event on Receive Emote",
+        "RegisterCreatureEvent(${2:MyCreatureEntry}, CreatureEvents.CREATURE_EVENT_ON_RECEIVE_EMOTE, (...args) => $1(...args));"
+      ],
+      "description": "Creature Receive Emote",
+      "scope": "typescript"
+    },
+    "Creature Damage Taken": {
+      "prefix": "creature_damage_taken",
+      "body": [
+        "const $1: creature_event_on_damage_taken = (event: number, creature: Creature, attacker: Creature, damage: number): boolean => {",
+        "\t// Implementation",
+        "\treturn false; // return true to stop normal action",
+        "};",
+        "",
+        "// Register Creature Event on Damage Taken",
+        "RegisterCreatureEvent(${2:MyCreatureEntry}, CreatureEvents.CREATURE_EVENT_ON_DAMAGE_TAKEN, (...args) => $1(...args));"
+      ],
+      "description": "Creature Damage Taken",
+      "scope": "typescript"
+    },
+    "Creature Pre Combat": {
+        "prefix": "creature_pre_combat",
+        "body": [
+          "const $1: creature_event_on_pre_combat = (event: number, creature: Creature, target: Creature): boolean => {",
+          "\t// Implementation",
+          "\treturn false; // return true to stop normal action",
+          "};",
+          "",
+          "// Register Creature Event on Pre Combat",
+          "RegisterCreatureEvent(${2:MyCreatureEntry}, CreatureEvents.CREATURE_EVENT_ON_PRE_COMBAT, (...args) => $1(...args));"
+        ],
+        "description": "Creature Pre Combat",
+        "scope": "typescript"
+      },
+      "Creature Hit By Spell": {
+        "prefix": "creature_hit_by_spell",
+        "body": [
+          "const $1: creature_event_on_hit_by_spell = (event: number, creature: Creature, caster: Creature, spellId: number): boolean => {",
+          "\t// Implementation",
+          "\treturn false; // return true to stop normal action",
+          "};",
+          "",
+          "// Register Creature Event on Hit By Spell",
+          "RegisterCreatureEvent(${2:MyCreatureEntry}, CreatureEvents.CREATURE_EVENT_ON_HIT_BY_SPELL, (...args) => $1(...args));"
+        ],
+        "description": "Creature Hit By Spell",
+        "scope": "typescript"
+      },
+        "Creature Owner Attacked": {
+          "prefix": "creature_owner_attacked",
+          "body": [
+            "const $1: creature_event_on_owner_attacked = (event: number, creature: Creature, target: Creature): boolean => {",
+            "\t// Implementation",
+            "\treturn false; // return true to stop normal action",
+            "};",
+            "",
+            "// Register Creature Event on Owner Attacked",            
+            "RegisterCreatureEvent(${2:MyCreatureEntry}, CreatureEvents.CREATURE_EVENT_ON_OWNER_ATTACKED, (...args) => $1(...args));"
+          ],
+          "description": "Creature Owner Attacked",
+          "scope": "typescript"
+        },
+        "Creature Owner Attacked At": {
+          "prefix": "creature_owner_attacked_at",
+          "body": [
+            "const $1: creature_event_on_owner_attacked_at = (event: number, creature: Creature, attacker: Creature): boolean => {",
+            "\t// Implementation",
+            "\treturn false; // return true to stop normal action",
+            "};",
+            "",
+            "// Register Creature Event on Owner Attacked At",            
+            "RegisterCreatureEvent(${2:MyCreatureEntry}, CreatureEvents.CREATURE_EVENT_ON_OWNER_ATTACKED_AT, (...args) => $1(...args));"
+          ],
+          "description": "Creature Owner Attacked At",
+          "scope": "typescript"
+        },
+        "Creature Spell Hit Target": {
+          "prefix": "creature_spell_hit_target",
+          "body": [
+            "const $1: creature_event_on_spell_hit_target = (event: number, creature: Creature, target: Creature, spellId: number): boolean => {",
+            "\t// Implementation",
+            "\treturn false; // return true to stop normal action",
+            "};",
+            "",
+            "// Register Creature Event on Spell Hit Target",
+            "RegisterCreatureEvent(${2:MyCreatureEntry}, CreatureEvents.CREATURE_EVENT_ON_SPELL_HIT_TARGET, (...args) => $1(...args));"
+          ],
+          "description": "Creature Spell Hit Target",
+          "scope": "typescript"
+        },
+        "Creature Just Summoned Creature": {
+          "prefix": "creature_just_summoned_creature",
+          "body": [
+            "const $1: creature_event_on_just_summoned_creature = (event: number, creature: Creature, summon: Creature): boolean => {",
+            "\t// Implementation",
+            "\treturn false; // return true to stop normal action",
+            "};",
+            "",
+            "// Register Creature Event on Just Summoned Creature",
+            "RegisterCreatureEvent(${2:MyCreatureEntry}, CreatureEvents.CREATURE_EVENT_ON_JUST_SUMMONED_CREATURE, (...args) => $1(...args));"
+          ],
+          "description": "Creature Just Summoned Creature",
+          "scope": "typescript"
+        },
+        "Creature Summoned Creature Despawn": {
+          "prefix": "creature_summoned_creature_despawn",
+          "body": [
+            "const $1: creature_event_on_summoned_creature_despawn = (event: number, creature: Creature, summon: Creature): boolean => {",
+            "\t// Implementation",
+            "\treturn false; // return true to stop normal action",
+            "};",
+            "",
+            "// Register Creature Event on Summoned Creature Despawn",
+            "RegisterCreatureEvent(${2:MyCreatureEntry}, CreatureEvents.CREATURE_EVENT_ON_SUMMONED_CREATURE_DESPAWN, (...args) => $1(...args));"
+          ],
+          "description": "Creature Summoned Creature Despawn",
+          "scope": "typescript"
+        },
+        "Creature Summoned Creature Died": {
+          "prefix": "creature_summoned_creature_died",
+          "body": [
+            "const $1: creature_event_on_summoned_creature_died = (event: number, creature: Creature, summon: Creature, killer: Creature): boolean => {",
+            "\t// Implementation",
+            "\treturn false; // return true to stop normal action",
+            "};",
+            "",
+            "// Register Creature Event on Summoned Creature Died",        
+            "RegisterCreatureEvent(${2:MyCreatureEntry}, CreatureEvents.CREATURE_EVENT_ON_SUMMONED_CREATURE_DIED, (...args) => $1(...args));"
+          ],
+          "description": "Creature Summoned Creature Died",
+          "scope": "typescript"
+        },
+        "Creature Summoned": {
+          "prefix": "creature_summoned",
+          "body": [
+            "const $1: creature_event_on_summoned = (event: number, creature: Creature, summoner: Creature): boolean => {",
+            "\t// Implementation",
+            "\treturn false; // return true to stop normal action",
+            "};",
+            "",
+            "// Register Creature Event on Summoned",
+            "RegisterCreatureEvent(${2:MyCreatureEntry}, CreatureEvents.CREATURE_EVENT_ON_SUMMONED, (...args) => $1(...args));"
+          ],
+          "description": "Creature Summoned",
+          "scope": "typescript"
+        },
+
+        "Creature Reset": {
+            "prefix": "creature_reset",
+            "body": [
+              "const $1: creature_event_on_reset = (event: number, creature: Creature): boolean => {",
+              "\t// Implementation",
+              "\treturn false; // return true to stop normal action",
+              "};",
+              "",
+              "// Register Creature Event on Reset",
+              "RegisterCreatureEvent(${2:MyCreatureEntry}, CreatureEvents.CREATURE_EVENT_ON_RESET, (...args) => $1(...args));"
+            ],
+            "description": "Creature Reset",
+            "scope": "typescript"
+          },
+          "Creature Reach Home": {
+            "prefix": "creature_reach_home",
+            "body": [
+              "const $1: creature_event_on_reach_home = (event: number, creature: Creature): boolean => {",
+              "\t// Implementation",
+              "\treturn false; // return true to stop normal action",
+              "};",
+              "",
+              "// Register Creature Event on Reach Home",
+              "RegisterCreatureEvent(${2:MyCreatureEntry}, CreatureEvents.CREATURE_EVENT_ON_REACH_HOME, (...args) => $1(...args));"
+            ],
+            "description": "Creature Reach Home",
+            "scope": "typescript"
+          },
+          "Creature Corpse Removed": {
+            "prefix": "creature_corpse_removed",
+            "body": [
+              "const $1: creature_event_on_corpse_removed = (event: number, creature: Creature, respawnDelay: number): boolean => {",
+              "\t// Implementation",
+              "\treturn false; // return true to stop normal action",
+              "};",
+              "",
+              "// Register Creature Event on Corpse Removed",
+              "RegisterCreatureEvent(${2:MyCreatureEntry}, CreatureEvents.CREATURE_EVENT_ON_CORPSE_REMOVED, (...args) => $1(...args));"
+            ],
+            "description": "Creature Corpse Removed",
+            "scope": "typescript"
+          },
+          "Creature Move in Line of Sight": {
+            "prefix": "creature_move_in_los",
+            "body": [
+              "const $1: creature_event_on_move_in_los = (event: number, creature: Creature, unit: Unit): boolean => {",
+              "\t// Implementation",
+              "\treturn false; // return true to stop normal action",
+              "};",
+              "",
+              "// Register Creature Event on Move in Line of Sight",
+              "RegisterCreatureEvent(${2:MyCreatureEntry}, CreatureEvents.CREATURE_EVENT_ON_MOVE_IN_LOS, (...args) => $1(...args));"
+            ],
+            "description": "Creature Move in Line of Sight",
+            "scope": "typescript"
+          },
+          "Creature Dummy Effect": {
+            "prefix": "creature_dummy_effect",
+            "body": [
+              "const $1: creature_event_on_dummy_effect = (event: number, caster: Unit, spellId: number, effIndex: number, creature: Creature): boolean => {",
+              "\t// Implementation",
+              "\treturn false; // return true to stop normal action",
+              "};",
+              "",
+              "// Register Creature Event on Dummy Effect",
+              "RegisterCreatureEvent(${2:MyCreatureEntry}, CreatureEvents.CREATURE_EVENT_ON_DUMMY_EFFECT, (...args) => $1(...args));"
+            ],
+            "description": "Creature Dummy Effect",
+            "scope": "typescript"
+          },
+          "Creature Quest Accept": {
+            "prefix": "creature_quest_accept",
+            "body": [
+              "const $1: creature_event_on_quest_accept = (event: number, player: Player, creature: Creature, quest: Quest): boolean => {",
+              "\t// Implementation",
+              "\treturn false; // return true to stop normal action",
+              "};",
+              "",
+              "// Register Creature Event on Quest Accept",
+              "RegisterCreatureEvent(${2:MyCreatureEntry}, CreatureEvents.CREATURE_EVENT_ON_QUEST_ACCEPT, (...args) => $1(...args));"
+            ],
+            "description": "Creature Quest Accept",
+            "scope": "typescript"
+          },
+          "Creature Quest Reward": {
+            "prefix": "creature_quest_reward",
+            "body": [
+              "const $1: creature_event_on_quest_reward = (event: number, player: Player, creature: Creature, quest: Quest, opt: number): boolean => {",
+              "\t// Implementation",
+              "\treturn false; // return true to stop normal action",
+              "};",
+              "",
+              "// Register Creature Event on Quest Reward",
+              "RegisterCreatureEvent(${2:MyCreatureEntry}, CreatureEvents.CREATURE_EVENT_ON_QUEST_REWARD, (...args) => $1(...args));"
+            ],
+            "description": "Creature Quest Reward",
+            "scope": "typescript"
+          },
+          "Creature Dialog Status": {
+            "prefix": "creature_dialog_status",
+            "body": [
+              "const $1: creature_event_on_dialog_status = (event: number, player: Player, creature: Creature): boolean => {",
+              "\t// Implementation",
+              "\treturn false; // return true to stop normal action",
+              "};",
+              "",
+              "// Register Creature Event on Dialog Status",
+              "RegisterCreatureEvent(${2:MyCreatureEntry}, CreatureEvents.CREATURE_EVENT_ON_DIALOG_STATUS, (...args) => $1(...args));"
+            ],
+            "description": "Creature Dialog Status",
+            "scope": "typescript"
+          },
+          "Creature Add": {
+            "prefix": "creature_add",
+            "body": [
+              "const $1: creature_event_on_add = (event: number, creature: Creature): boolean => {",
+              "\t// Implementation",
+              "\treturn false; // return true to stop normal action",
+              "};",
+              "",
+              "// Register Creature Event on Add",
+              "RegisterCreatureEvent(${2:MyCreatureEntry}, CreatureEvents.CREATURE_EVENT_ON_ADD, (...args) => $1(...args));"
+            ],
+            "description": "Creature Add",
+            "scope": "typescript"
+          },
+          "Creature Remove": {
+            "prefix": "creature_remove",
+            "body": [
+              "const $1: creature_event_on_remove = (event: number, creature: Creature): boolean => {",
+              "\t// Implementation",
+              "\treturn false; // return true to stop normal action",
+              "};",
+              "",
+              "// Register Creature Event on Remove",
+              "RegisterCreatureEvent(${2:MyCreatureEntry}, CreatureEvents.CREATURE_EVENT_ON_REMOVE, (...args) => $1(...args));"
+            ],
+            "description": "Creature Remove",
+            "scope": "typescript"
+          }
+
+
+      }
+      

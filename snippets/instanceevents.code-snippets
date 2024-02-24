@@ -1,0 +1,94 @@
+{
+  "Instance Initialize": {
+    "prefix": "instance_initialize",
+    "body": [
+      "const $1: instance_event_on_initialize = (event: number, instanceData: number[], map: EMap) => {",
+      "\t// Implementation",
+      "};",
+      "",
+      "// Register",
+      "RegisterMapEvent($2, InstanceEvents.INSTANCE_EVENT_ON_INITIALIZE, (...args) => $1(...args));"
+    ],
+    "description": "Instance Event on Initialize",
+    "scope": "typescript"
+  },
+  "Instance Load": {
+    "prefix": "instance_load",
+    "body": [
+      "const $1: instance_event_on_load = (event: number, instanceData: number[], map: EMap) => {",
+      "\t// Implementation",
+      "};",
+      "",
+      "// Register",
+      "RegisterMapEvent($2, InstanceEvents.INSTANCE_EVENT_ON_LOAD, (...args) => $1(...args));"
+    ],
+    "description": "Instance Event on Load",
+    "scope": "typescript"
+  },
+  "Instance Update": {
+    "prefix": "instance_update",
+    "body": [
+      "const $1: instance_event_on_update = (event: number, instanceData: number[], map: EMap, diff: number) => {",
+      "\t// Implementation",
+      "};",
+      "",
+      "// Register",
+      "RegisterMapEvent($2, InstanceEvents.INSTANCE_EVENT_ON_UPDATE, (...args) => $1(...args));"
+    ],
+    "description": "Instance Event on Update",
+    "scope": "typescript"
+  },
+  "Instance Player Enter": {
+    "prefix": "instance_player_enter",
+    "body": [
+      "const $1: instance_event_on_player_enter = (event: number, instanceData: number[], map: EMap, player: Player) => {",
+      "\t// Implementation",
+      "};",
+      "",
+      "// Register",
+      "RegisterMapEvent($2, InstanceEvents.INSTANCE_EVENT_ON_PLAYER_ENTER, (...args) => $1(...args));"
+    ],
+    "description": "Instance Event on Player Enter",
+    "scope": "typescript"
+  },
+  "Instance Creature Create": {
+    "prefix": "instance_creature_create",
+    "body": [
+      "const $1: instance_event_on_creature_create = (event: number, instanceData: number[], map: EMap, creature: Creature) => {",
+      "\t// Implementation",
+      "};",
+      "",
+      "// Register",
+      "RegisterMapEvent($2, InstanceEvents.INSTANCE_EVENT_ON_CREATURE_CREATE, (...args) => $1(...args));"
+    ],
+    "description": "Instance Event on Creature Create",
+    "scope": "typescript"
+  },
+  "Instance GameObject Create": {
+    "prefix": "instance_gameobject_create",
+    "body": [
+      "const $1: instance_event_on_gameobject_create = (event: number, instanceData: number[], map: EMap, gameObject: GameObject) => {",
+      "\t// Implementation",
+      "};",
+      "",
+      "// Register",
+      "RegisterMapEvent($2, InstanceEvents.INSTANCE_EVENT_ON_GAMEOBJECT_CREATE, (...args) => $1(...args));"
+    ],
+    "description": "Instance Event on GameObject Create",
+    "scope": "typescript"
+  },
+  "Instance Check Encounter in Progress": {
+    "prefix": "instance_check_encounter_in_progress",
+    "body": [
+      "const $1: instance_event_on_check_encounter_in_progress = (event: number, instanceData: number[], map: EMap): boolean => {",
+      "\t// Implementation",
+      "\treturn true;",
+      "};",
+      "",
+      "// Register",
+      "RegisterMapEvent($2, InstanceEvents.INSTANCE_EVENT_ON_CHECK_ENCOUNTER_IN_PROGRESS, (...args) => $1(...args));"
+    ],
+    "description": "Instance Event on Check Encounter in Progress",
+    "scope": "typescript"
+  }
+}

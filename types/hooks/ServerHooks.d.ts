@@ -209,15 +209,13 @@ declare type world_event_on_delete_creature = (
  *     };
  */
 declare function RegisterServerEvent(
-  this: void,
-  entry: number,
+  this: void,  
   event: ServerEvents.SERVER_EVENT_ON_PACKET_RECEIVE,
   func: HookFunctionNoSelf<server_event_on_packet_receive_any>,
   shots?: number,
 ): (...args: any[]) => any;
 declare function RegisterServerEvent(
-  this: void,
-  entry: number,
+  this: void,  
   event: ServerEvents.SERVER_EVENT_ON_PACKET_SEND,
   func: HookFunctionNoSelf<server_event_on_packet_send_any>,
   shots?: number,

@@ -1,0 +1,55 @@
+{
+    "Battleground Start": {
+      "prefix": "bg_start",
+      "body": [
+        "const $1: bg_event_on_start = (event: number, bg: BattleGround, bgId: BattleGroundTypeId, instanceId: number) => {",
+        "\t// Implementation",
+        "};",
+        "",
+        "// Register",
+        "RegisterBGEvent(BGEvents.BG_EVENT_ON_START, (...args) => $1(...args));"
+      ],
+      "description": "Battleground Event on Start",
+      "scope": "typescript"
+    },
+    "Battleground End": {
+      "prefix": "bg_end",
+      "body": [
+        "const $1: bg_event_on_end = (event: number, bg: BattleGround, bgId: BattleGroundTypeId, instanceId: number, winner: Team) => {",
+        "\t// Implementation",
+        "};",
+        "",
+        "// Register",
+        "RegisterBGEvent(BGEvents.BG_EVENT_ON_END, (...args) => $1(...args));"
+      ],
+      "description": "Battleground Event on End",
+      "scope": "typescript"
+    },
+    "Battleground Create": {
+      "prefix": "bg_create",
+      "body": [
+        "const $1: bg_event_on_create = (event: number, bg: BattleGround, bgId: BattleGroundTypeId, instanceId: number) => {",
+        "\t// Implementation",
+        "};",
+        "",
+        "// Register",
+        "RegisterBGEvent(BGEvents.BG_EVENT_ON_CREATE, (...args) => $1(...args));"
+      ],
+      "description": "Battleground Event on Create",
+      "scope": "typescript"
+    },
+    "Battleground Pre-Destroy": {
+      "prefix": "bg_pre_destroy",
+      "body": [
+        "const $1: bg_event_on_pre_destroy = (event: number, bg: BattleGround, bgId: BattleGroundTypeId, instanceId: number) => {",
+        "\t// Implementation",
+        "};",
+        "",
+        "// Register",
+        "RegisterBGEvent(BGEvents.BG_EVENT_ON_PRE_DESTROY, (...args) => $1(...args));"
+      ],
+      "description": "Battleground Event on Pre-Destroy",
+      "scope": "typescript"
+    }
+  }
+  

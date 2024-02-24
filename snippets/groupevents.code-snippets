@@ -1,0 +1,81 @@
+{
+    "Group Member Add": {
+      "prefix": "group_member_add",
+      "body": [
+        "const $1: group_event_on_member_add = (event: number, group: Group, guid: number) => {",
+        "\t// Implementation",
+        "};",
+        "",
+        "// Register",
+        "RegisterGroupEvent(GroupEvents.GROUP_EVENT_ON_MEMBER_ADD, (...args) => $1(...args));"
+      ],
+      "description": "Group Event on Member Add",
+      "scope": "typescript"
+    },
+    "Group Member Invite": {
+      "prefix": "group_member_invite",
+      "body": [
+        "const $1: group_event_on_member_invite = (event: number, group: Group, guid: number) => {",
+        "\t// Implementation",
+        "};",
+        "",
+        "// Register",
+        "RegisterGroupEvent(GroupEvents.GROUP_EVENT_ON_MEMBER_INVITE, (...args) => $1(...args));"
+      ],
+      "description": "Group Event on Member Invite",
+      "scope": "typescript"
+    },
+    "Group Member Remove": {
+      "prefix": "group_member_remove",
+      "body": [
+        "const $1: group_event_on_member_remove = (event: number, group: Group, guid: number, method: number) => {",
+        "\t// Implementation",
+        "};",
+        "",
+        "// Register",
+        "RegisterGroupEvent(GroupEvents.GROUP_EVENT_ON_MEMBER_REMOVE, (...args) => $1(...args));"
+      ],
+      "description": "Group Event on Member Remove",
+      "scope": "typescript"
+    },
+    "Group Leader Change": {
+      "prefix": "group_leader_change",
+      "body": [
+        "const $1: group_event_on_leader_change = (event: number, group: Group, newLeaderGuid: number, oldLeaderGuid: number) => {",
+        "\t// Implementation",
+        "};",
+        "",
+        "// Register",
+        "RegisterGroupEvent(GroupEvents.GROUP_EVENT_ON_LEADER_CHANGE, (...args) => $1(...args));"
+      ],
+      "description": "Group Event on Leader Change",
+      "scope": "typescript"
+    },
+    "Group Disband": {
+      "prefix": "group_disband",
+      "body": [
+        "const $1: group_event_on_disband = (event: number, group: Group) => {",
+        "\t// Implementation",
+        "};",
+        "",
+        "// Register",
+        "RegisterGroupEvent(GroupEvents.GROUP_EVENT_ON_DISBAND, (...args) => $1(...args));"
+      ],
+      "description": "Group Event on Disband",
+      "scope": "typescript"
+    },
+    "Group Create": {
+      "prefix": "group_create",
+      "body": [
+        "const $1: group_event_on_create = (event: number, group: Group, leaderGuid: number, groupType: number) => {",
+        "\t// Implementation",
+        "};",
+        "",
+        "// Register",
+        "RegisterGroupEvent(GroupEvents.GROUP_EVENT_ON_CREATE, (...args) => $1(...args));"
+      ],
+      "description": "Group Event on Create",
+      "scope": "typescript"
+    }
+  }
+  

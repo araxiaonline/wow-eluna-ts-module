@@ -1,0 +1,378 @@
+{
+  "Character Create": {
+    "prefix": "player_character_create",
+    "body": [
+      "const $1: player_event_on_character_create = (event: number, player: Player) => {",
+      "\t// Implementation",
+      "};",
+      "",
+      "// Register",
+      "RegisterPlayerEvent(PlayerEvents.PLAYER_EVENT_ON_CHARACTER_CREATE, (...args) => $1(...args));"
+    ],
+    "description": "Player Event on Character Create",
+    "scope": "typescript"
+  },
+  "Character Delete": {
+    "prefix": "player_character_delete",
+    "body": [
+      "const $1: player_event_on_character_delete = (event: number, guid: number) => {",
+      "\t// Implementation",
+      "};",
+      "",
+      "// Register",
+      "RegisterPlayerEvent(PlayerEvents.PLAYER_EVENT_ON_CHARACTER_DELETE, (...args) => $1(...args));"
+    ],
+    "description": "Player Event on Character Delete",
+    "scope": "typescript"
+  },
+  "Login": {
+    "prefix": "player_login",
+    "body": [
+      "const $1: player_event_on_login = (event: number, player: Player) => {",
+      "\t// Implementation",
+      "};",
+      "",
+      "// Register",
+      "RegisterPlayerEvent(PlayerEvents.PLAYER_EVENT_ON_LOGIN, (...args) => $1(...args));"
+    ],
+    "description": "Player Event on Login",
+    "scope": "typescript"
+  },
+  "Logout": {
+    "prefix": "player_logout",
+    "body": [
+      "const $1: player_event_on_logout = (event: number, player: Player) => {",
+      "\t// Implementation",
+      "};",
+      "",
+      "// Register",
+      "RegisterPlayerEvent(PlayerEvents.PLAYER_EVENT_ON_LOGOUT, (...args) => $1(...args));"
+    ],
+    "description": "Player Event on Logout",
+    "scope": "typescript"
+  },
+  "Spell Cast": {
+    "prefix": "player_spell_cast",
+    "body": [
+      "const $1: player_event_on_spell_cast = (event: number, player: Player, spell: Spell, skipCheck: boolean) => {",
+      "\t// Implementation",
+      "};",
+      "",
+      "// Register",
+      "RegisterPlayerEvent(PlayerEvents.PLAYER_EVENT_ON_SPELL_CAST, (...args) => $1(...args));"
+    ],
+    "description": "Player Event on Spell Cast",
+    "scope": "typescript"
+  },
+  "Kill Player": {
+    "prefix": "player_kill_player",
+    "body": [
+      "const $1: player_event_on_kill_player = (event: number, killer: Player, killed: Player) => {",
+      "\t// Implementation",
+      "};",
+      "",
+      "// Register",
+      "RegisterPlayerEvent(PlayerEvents.PLAYER_EVENT_ON_KILL_PLAYER, (...args) => $1(...args));"
+    ],
+    "description": "Player Event on Kill Player",
+    "scope": "typescript"
+  },
+  "Kill Creature": {
+    "prefix": "player_kill_creature",
+    "body": [
+      "const $1: player_event_on_kill_creature = (event: number, killer: Player, killed: Creature) => {",
+      "\t// Implementation",
+      "};",
+      "",
+      "// Register",
+      "RegisterPlayerEvent(PlayerEvents.PLAYER_EVENT_ON_KILL_CREATURE, (...args) => $1(...args));"
+    ],
+    "description": "Player Event on Kill Creature",
+    "scope": "typescript"
+  },
+  "Killed by Creature": {
+    "prefix": "player_killed_by_creature",
+    "body": [
+      "const $1: player_event_on_killed_by_creature = (event: number, killer: Creature, killed: Player) => {",
+      "\t// Implementation",
+      "};",
+      "",
+      "// Register",
+      "RegisterPlayerEvent(PlayerEvents.PLAYER_EVENT_ON_KILLED_BY_CREATURE, (...args) => $1(...args));"
+    ],
+    "description": "Player Event on Killed by Creature",
+    "scope": "typescript"
+  },
+  "Duel Request": {
+    "prefix": "player_duel_request",
+    "body": [
+      "const $1: player_event_on_duel_request = (event: number, target: Player, challenger: Player) => {",
+      "\t// Implementation",
+      "};",
+      "",
+      "// Register",
+      "RegisterPlayerEvent(PlayerEvents.PLAYER_EVENT_ON_DUEL_REQUEST, (...args) => $1(...args));"
+    ],
+    "description": "Player Event on Duel Request",
+    "scope": "typescript"
+  },
+  "Duel Start": {
+    "prefix": "player_duel_start",
+    "body": [
+      "const $1: player_event_on_duel_start = (event: number, starter: Player, challenger: Player) => {",
+      "\t// Implementation",
+      "};",
+      "",
+      "// Register",
+      "RegisterPlayerEvent(PlayerEvents.PLAYER_EVENT_ON_DUEL_START, (...args) => $1(...args));"
+    ],
+    "description": "Player Event on Duel Start",
+    "scope": "typescript"
+  },
+  "Duel End": {
+    "prefix": "player_duel_end",
+    "body": [
+      "const $1: player_event_on_duel_end = (event: number, winner: Player, loser: Player, type: DuelCompleteType) => {",
+      "\t// Implementation",
+      "};",
+      "",
+      "// Register",
+      "RegisterPlayerEvent(PlayerEvents.PLAYER_EVENT_ON_DUEL_END, (...args) => $1(...args));"
+    ],
+    "description": "Player Event on Duel End",
+    "scope": "typescript"
+  },
+  "Give XP": {
+    "prefix": "player_give_xp",
+    "body": [
+      "const $1: player_event_on_give_xp = (event: number, player: Player, amount: number, victim: Player) => {",
+      "\t// Implementation",
+      "};",
+      "",
+      "// Register",
+      "RegisterPlayerEvent(PlayerEvents.PLAYER_EVENT_ON_GIVE_XP, (...args) => $1(...args));"
+    ],
+    "description": "Player Event on Give XP",
+    "scope": "typescript"
+  },
+  "Level Change": {
+    "prefix": "player_level_change",
+    "body": [
+      "const $1: player_event_on_level_change = (event: number, player: Player, oldLevel: number) => {",
+      "\t// Implementation",
+      "};",
+      "",
+      "// Register",
+      "RegisterPlayerEvent(PlayerEvents.PLAYER_EVENT_ON_LEVEL_CHANGE, (...args) => $1(...args));"
+    ],
+    "description": "Player Event on Level Change",
+    "scope": "typescript"
+  },
+  "Money Change": {
+    "prefix": "player_money_change",
+    "body": [
+      "const $1: player_event_on_money_change = (event: number, player: Player, amount: number) => {",
+      "\t// Implementation",
+      "};",
+      "",
+      "// Register",
+      "RegisterPlayerEvent(PlayerEvents.PLAYER_EVENT_ON_MONEY_CHANGE, (...args) => $1(...args));"
+    ],
+    "description": "Player Event on Money Change",
+    "scope": "typescript"
+  },
+  "Reputation Change": {
+    "prefix": "player_reputation_change",
+    "body": [
+      "const $1: player_event_on_reputation_change = (event: number, player: Player, factionId: number, standing: number, incremental: boolean) => {",
+      "\t// Implementation",
+      "};",
+      "",
+      "// Register",
+      "RegisterPlayerEvent(PlayerEvents.PLAYER_EVENT_ON_REPUTATION_CHANGE, (...args) => $1(...args));"
+    ],
+    "description": "Player Event on Reputation Change",
+    "scope": "typescript"
+  },
+  "Talents Change": {
+    "prefix": "player_talents_change",
+    "body": [
+      "const $1: player_event_on_talents_change = (event: number, player: Player, points: number) => {",
+      "\t// Implementation",
+      "};",
+      "",
+      "// Register",
+      "RegisterPlayerEvent(PlayerEvents.PLAYER_EVENT_ON_TALENTS_CHANGE, (...args) => $1(...args));"
+    ],
+    "description": "Player Event on Talents Change",
+    "scope": "typescript"
+  },
+  "Talents Reset": {
+    "prefix": "player_talents_reset",
+    "body": [
+      "const $1: player_event_on_talents_reset = (event: number, player: Player, noCost: boolean) => {",
+      "\t// Implementation",
+      "};",
+      "",
+      "// Register",
+      "RegisterPlayerEvent(PlayerEvents.PLAYER_EVENT_ON_TALENTS_RESET, (...args) => $1(...args));"
+    ],
+    "description": "Player Event on Talents Reset",
+    "scope": "typescript"
+  },
+  "Chat": {
+    "prefix": "player_chat",
+    "body": [
+      "const $1: player_event_on_chat = (event: number, player: Player, msg: string, Type: ChatMsg, lang: Language): string | boolean => {",
+      "\t// Implementation",
+      "\treturn '' // Return a string to override the message, or return nothing to keep the original message;",
+      "\treturn false // Return false to block the message, or return true to allow the message;",      
+      "};",
+      "",
+      "// Register",
+      "RegisterPlayerEvent(PlayerEvents.PLAYER_EVENT_ON_CHAT, (...args) => $1(...args));"
+    ],
+    "description": "Player Event on Chat",
+    "scope": "typescript"
+  },
+  "Whisper": {
+    "prefix": "player_whisper",
+    "body": [
+      "const $1: player_event_on_whisper = (event: number, player: Player, msg: string, Type: ChatMsg, lang: Language, receiver: Player): string | boolean => {",
+      "\t// Implementation",
+      "\treturn '' // Return a string to override the message, or return nothing to keep the original message;",
+      "\treturn false // Return false to block the message, or return true to allow the message;",          
+      "};",
+      "",
+      "// Register",
+      "RegisterPlayerEvent(PlayerEvents.PLAYER_EVENT_ON_WHISPER, (...args) => $1(...args));"
+    ],
+    "description": "Player Event on Whisper",
+    "scope": "typescript"
+  },
+  "Group Chat": {
+    "prefix": "player_group_chat",
+    "body": [
+      "const $1: player_event_on_group_chat = (event: number, player: Player, msg: string, Type: ChatMsg, lang: Language, group: Group): string | boolean => {",
+      "\t// Implementation",
+      "\treturn '' // Return a string to override the message, or return nothing to keep the original message;",
+      "\treturn false // Return false to block the message, or return true to allow the message;",      
+      "};",
+      "",
+      "// Register",
+      "RegisterPlayerEvent(PlayerEvents.PLAYER_EVENT_ON_GROUP_CHAT, (...args) => $1(...args));"
+    ],
+    "description": "Player Event on Group Chat",
+    "scope": "typescript"
+  },
+  "Guild Chat": {
+    "prefix": "player_guild_chat",
+    "body": [
+      "const $1: player_event_on_guild_chat = (event: number, player: Player, msg: string, Type: ChatMsg, lang: Language, guild: Guild): string | boolean => {",
+      "\t// Implementation",
+      "\treturn '' // Return a string to override the message, or return nothing to keep the original message;",
+      "\treturn false // Return false to block the message, or return true to allow the message;",      
+      "};",
+      "",
+      "// Register",
+      "RegisterPlayerEvent(PlayerEvents.PLAYER_EVENT_ON_GUILD_CHAT, (...args) => $1(...args));"
+    ],
+    "description": "Player Event on Guild Chat",
+    "scope": "typescript"
+  },
+  "Channel Chat": {
+    "prefix": "player_channel_chat",
+    "body": [
+      "const $1: player_event_on_channel_chat = (event: number, player: Player, msg: string, Type: ChatMsg, lang: Language, channel: number): string | boolean => {",
+      "\t// Implementation",
+      "\treturn '' // Return a string to override the message, or return nothing to keep the original message;",
+      "\treturn false // Return false to block the message, or return true to allow the message;",
+      "};",
+      "",
+      "// Register",
+      "RegisterPlayerEvent(PlayerEvents.PLAYER_EVENT_ON_CHANNEL_CHAT, (...args) => $1(...args));"
+    ],
+    "description": "Player Event on Channel Chat",
+    "scope": "typescript"
+  },
+  "Emote": {
+    "prefix": "player_emote",
+    "body": [
+      "const $1: player_event_on_emote = (event: number, player: Player, emote: EmoteType) => {",
+      "\t// Implementation",
+      "};",
+      "",
+      "// Register",
+      "RegisterPlayerEvent(PlayerEvents.PLAYER_EVENT_ON_EMOTE, (...args) => $1(...args));"
+    ],
+    "description": "Player Event on Emote",
+    "scope": "typescript"
+  },
+  "Text Emote": {
+    "prefix": "player_text_emote",
+    "body": [
+      "const $1: player_event_on_text_emote = (event: number, player: Player, textEmote: string, emoteNum: number, guid: number) => {",
+      "\t// Implementation",
+      "};",
+      "",
+      "// Register",
+      "RegisterPlayerEvent(PlayerEvents.PLAYER_EVENT_ON_TEXT_EMOTE, (...args) => $1(...args));"
+    ],
+    "description": "Player Event on Text Emote",
+    "scope": "typescript"
+  },
+  "Save": {
+    "prefix": "player_save",
+    "body": [
+      "const $1: player_event_on_save = (event: number, player: Player) => {",
+      "\t// Implementation",
+      "};",
+      "",
+      "// Register",
+      "RegisterPlayerEvent(PlayerEvents.PLAYER_EVENT_ON_SAVE, (...args) => $1(...args));"
+    ],
+    "description": "Player Event on Save",
+    "scope": "typescript"
+  },
+  "Bind to Instance": {
+    "prefix": "player_bind_to_instance",
+    "body": [
+      "const $1: player_event_on_bind_to_instance = (event: number, player: Player, difficulty: Difficulty, mapid: number, permanent: boolean) => {",
+      "\t// Implementation",
+      "};",
+      "",
+      "// Register",
+      "RegisterPlayerEvent(PlayerEvents.PLAYER_EVENT_ON_BIND_TO_INSTANCE, (...args) => $1(...args));"
+    ],
+    "description": "Player Event on Bind to Instance",
+    "scope": "typescript"
+  },
+  "Update Zone": {
+    "prefix": "player_update_zone",
+    "body": [
+      "const $1: player_event_on_update_zone = (event: number, player: Player, newZone: ZoneIdType, newArea: number) => {",
+      "\tif(newZone === ZoneIdType.Dalaran) {",
+      "\t\t// Implementation",
+      "\t}",                
+      "};",
+      "",
+      "// Register",
+      "RegisterPlayerEvent(PlayerEvents.PLAYER_EVENT_ON_UPDATE_ZONE, (...args) => $1(...args));"
+    ],
+    "description": "Player Event on Update Zone",
+    "scope": "typescript"
+  },
+  "Map Change": {
+    "prefix": "player_map_change",
+    "body": [
+      "const $1: player_event_on_map_change = (event: number, player: Player) => {",
+      "\t// Implementation",
+      "};",
+      "",
+      "// Register",
+      "RegisterPlayerEvent(PlayerEvents.PLAYER_EVENT_ON_MAP_CHANGE, (...args) => $1(...args));"
+    ],
+    "description": "Player Event on Map Change",
+    "scope": "typescript"
+  }
+}

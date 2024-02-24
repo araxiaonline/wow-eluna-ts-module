@@ -145,13 +145,13 @@ declare type player_event_on_duel_end = (
 declare type player_event_on_emote = (
   event: PlayerEvents.PLAYER_EVENT_ON_EMOTE,
   pPlayer: Player,
-  emote: number,
+  emote: EmoteType,
 ) => void;
 
 declare type player_event_on_text_emote = (
   event: PlayerEvents.PLAYER_EVENT_ON_TEXT_EMOTE,
   pPlayer: Player,
-  textEmote: number,
+  textEmote: string,
   emoteNum: number,
   guid: number,
 ) => void;
@@ -192,14 +192,14 @@ declare type player_event_on_bind_to_instance = (
   event: PlayerEvents.PLAYER_EVENT_ON_BIND_TO_INSTANCE,
   pPlayer: Player,
   difficulty: Difficulty,
-  mapid: number,
+  mapid: number | MapIdType,
   permanent: boolean,
 ) => void;
 
 declare type player_event_on_update_zone = (
   event: PlayerEvents.PLAYER_EVENT_ON_UPDATE_ZONE,
   pPlayer: Player,
-  newZone: number,
+  newZone: number | ZoneIdType,
   newArea: number,
 ) => void;
 

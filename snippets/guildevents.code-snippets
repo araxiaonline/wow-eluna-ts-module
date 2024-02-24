@@ -1,0 +1,146 @@
+{
+    "Guild Add Member": {
+      "prefix": "guild_add_member",
+      "body": [
+        "const $1: guild_event_on_add_member = (event: number, guild: Guild, player: Player, rank: number) => {",
+        "\t// Implementation",
+        "};",
+        "",
+        "// Register",
+        "RegisterGuildEvent(GuildEvents.GUILD_EVENT_ON_ADD_MEMBER, (...args) => $1(...args));"
+      ],
+      "description": "Guild Event on Add Member",
+      "scope": "typescript"
+    },
+    "Guild Remove Member": {
+      "prefix": "guild_remove_member",
+      "body": [
+        "const $1: guild_event_on_remove_member = (event: number, guild: Guild, player: Player, isDisbanding: boolean) => {",
+        "\t// Implementation",
+        "};",
+        "",
+        "// Register",
+        "RegisterGuildEvent(GuildEvents.GUILD_EVENT_ON_REMOVE_MEMBER, (...args) => $1(...args));"
+      ],
+      "description": "Guild Event on Remove Member",
+      "scope": "typescript"
+    },
+    "Guild MOTD Change": {
+      "prefix": "guild_motd_change",
+      "body": [
+        "const $1: guild_event_on_motd_change = (event: number, guild: Guild, newMotd: string) => {",
+        "\t// Implementation",
+        "};",
+        "",
+        "// Register",
+        "RegisterGuildEvent(GuildEvents.GUILD_EVENT_ON_MOTD_CHANGE, (...args) => $1(...args));"
+      ],
+      "description": "Guild Event on MOTD Change",
+      "scope": "typescript"
+    },
+    "Guild Info Change": {
+      "prefix": "guild_info_change",
+      "body": [
+        "const $1: guild_event_on_info_change = (event: number, guild: Guild, newInfo: string) => {",
+        "\t// Implementation",
+        "};",
+        "",
+        "// Register",
+        "RegisterGuildEvent(GuildEvents.GUILD_EVENT_ON_INFO_CHANGE, (...args) => $1(...args));"
+      ],
+      "description": "Guild Event on Info Change",
+      "scope": "typescript"
+    },
+    "Guild Create": {
+      "prefix": "guild_create",
+      "body": [
+        "const $1: guild_event_on_create = (event: number, guild: Guild, leader: Player, name: string) => {",
+        "\t// Implementation",
+        "};",
+        "",
+        "// Register",
+        "RegisterGuildEvent(GuildEvents.GUILD_EVENT_ON_CREATE, (...args) => $1(...args));"
+      ],
+      "description": "Guild Event on Create",
+      "scope": "typescript"
+    },
+    "Guild Disband": {
+      "prefix": "guild_disband",
+      "body": [
+        "const $1: guild_event_on_disband = (event: number, guild: Guild) => {",
+        "\t// Implementation",
+        "};",
+        "",
+        "// Register",
+        "RegisterGuildEvent(GuildEvents.GUILD_EVENT_ON_DISBAND, (...args) => $1(...args));"
+      ],
+      "description": "Guild Event on Disband",
+      "scope": "typescript"
+    },
+    "Guild Money Withdraw": {
+      "prefix": "guild_money_withdraw",
+      "body": [
+        "const $1: guild_event_on_money_withdraw = (event: number, guild: Guild, player: Player, amount: number, isRepair: boolean) => {",
+        "\t// Implementation",
+        "};",
+        "",
+        "// Register",
+        "RegisterGuildEvent(GuildEvents.GUILD_EVENT_ON_MONEY_WITHDRAW, (...args) => $1(...args));"
+      ],
+      "description": "Guild Event on Money Withdraw",
+      "scope": "typescript"
+    },
+    "Guild Money Deposit": {
+      "prefix": "guild_money_deposit",
+      "body": [
+        "const $1: guild_event_on_money_deposit = (event: number, guild: Guild, player: Player, amount: number) => {",
+        "\t// Implementation",
+        "};",
+        "",
+        "// Register",
+        "RegisterGuildEvent(GuildEvents.GUILD_EVENT_ON_MONEY_DEPOSIT, (...args) => $1(...args));"
+      ],
+      "description": "Guild Event on Money Deposit",
+      "scope": "typescript"
+    },
+    "Guild Item Move": {
+      "prefix": "guild_item_move",
+      "body": [
+        "const $1: guild_event_on_item_move = (event: number, guild: Guild, player: Player, item: Item, isSrcBank: boolean, srcContainer: number, srcSlotId: number, isDestBank: boolean, destContainer: number, destSlotId: number) => {",
+        "\t// Implementation",
+        "};",
+        "",
+        "// Register",
+        "RegisterGuildEvent(GuildEvents.GUILD_EVENT_ON_ITEM_MOVE, (...args) => $1(...args));"
+      ],
+      "description": "Guild Event on Item Move",
+      "scope": "typescript"
+    },
+    "Guild Event": {
+      "prefix": "guild_event",
+      "body": [
+        "const $1: guild_event_on_event = (event: number, guild: Guild, eventType: number, plrGUIDLow1: number, plrGUIDLow2: number, newRank: GuildRank) => {",
+        "\t// Implementation",
+        "};",
+        "",
+        "// Register",
+        "RegisterGuildEvent(GuildEvents.GUILD_EVENT_ON_EVENT, (...args) => $1(...args));"
+      ],
+      "description": "Guild Event on Event",
+      "scope": "typescript"
+    },
+    "Guild Bank Event": {
+      "prefix": "guild_bank_event",
+      "body": [
+        "const $1: guild_event_on_bank_event = (event: number, guild: Guild, eventType: number, tabId: number, playerGUIDLow: number, itemOrMoney: number, itemStackCount: number, destTabId: number) => {",
+        "\t// Implementation",
+        "};",
+        "",
+        "// Register",
+        "RegisterGuildEvent(GuildEvents.GUILD_EVENT_ON_BANK_EVENT, (...args) => $1(...args));"
+      ],
+      "description": "Guild Event on Bank Event",
+      "scope": "typescript"
+    }
+  }
+  
