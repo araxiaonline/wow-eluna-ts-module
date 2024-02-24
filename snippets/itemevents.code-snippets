@@ -1,0 +1,72 @@
+{
+    "Item Dummy Effect": {
+      "prefix": "item_dummy_effect",
+      "body": [
+        "const $1: item_event_on_dummy_effect = (event: number, caster: Player, spellId: number, effIndex: number, item: Item) => {",
+        "\t// Implementation",
+        "};",
+        "",
+        "// Register",
+        "RegisterItemEvent($2, ItemEvents.ITEM_EVENT_ON_DUMMY_EFFECT, (...args) => $1(...args));"
+      ],
+      "description": "Item Event on Dummy Effect",
+      "scope": "typescript"
+    },
+    "Item Use": {
+      "prefix": "item_use",
+      "body": [
+        "const $1: item_event_on_use = (event: number, player: Player, item: Item, target: Unit): boolean => {",
+        "\t// Implementation",
+        "\treturn true; // Return false to stop the spell casting",
+        "};",
+        "",
+        "// Register",
+        "RegisterItemEvent($2, ItemEvents.ITEM_EVENT_ON_USE, (...args) => $1(...args));"
+      ],
+      "description": "Item Event on Use",
+      "scope": "typescript"
+    },
+    "Item Quest Accept": {
+      "prefix": "item_quest_accept",
+      "body": [
+        "const $1: item_event_on_quest_accept = (event: number, player: Player, item: Item, quest: Quest): boolean => {",
+        "\t// Implementation",
+        "\treturn true; // Return true",
+        "};",
+        "",
+        "// Register",
+        "RegisterItemEvent($2, ItemEvents.ITEM_EVENT_ON_QUEST_ACCEPT, (...args) => $1(...args));"
+      ],
+      "description": "Item Event on Quest Accept",
+      "scope": "typescript"
+    },
+    "Item Expire": {
+      "prefix": "item_expire",
+      "body": [
+        "const $1: item_event_on_expire = (event: number, player: Player, itemId: number): boolean => {",
+        "\t// Implementation",
+        "\treturn true; // Return true",
+        "};",
+        "",
+        "// Register",
+        "RegisterItemEvent($2, ItemEvents.ITEM_EVENT_ON_EXPIRE, (...args) => $1(...args));"
+      ],
+      "description": "Item Event on Expire",
+      "scope": "typescript"
+    },
+    "Item Remove": {
+      "prefix": "item_remove",
+      "body": [
+        "const $1: item_event_on_remove = (event: number, player: Player, item: Item): boolean => {",
+        "\t// Implementation",
+        "\treturn true; // Return true",
+        "};",
+        "",
+        "// Register",
+        "RegisterItemEvent($2, ItemEvents.ITEM_EVENT_ON_REMOVE, (...args) => $1(...args));"
+      ],
+      "description": "Item Event on Remove",
+      "scope": "typescript"
+    }
+  }
+  
