@@ -11,8 +11,7 @@
       "esnext","DOM"
     ],        
     "types": [      
-      "lua-types/5.2",
-      "jest"      
+      "lua-types/5.2"      
     ],
     "typeRoots": [
       "./types",     

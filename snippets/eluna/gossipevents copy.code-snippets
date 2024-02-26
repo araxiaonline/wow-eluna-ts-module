@@ -1,0 +1,115 @@
+{
+    "Item Gossip Hello": {
+      "prefix": "item_gossip_on_hello",
+      "body": [
+        "const $1: gossip_event_on_hello = (event: number, player: Player, item: Item): boolean => {",
+        "\t// Implementation",
+        "\treturn true;",
+        "};",
+        "",
+        "// Register Item Gossip Event on Hello",
+        "RegisterItemGossipEvent(${2:MyItemEntry}, GossipEvents.GOSSIP_EVENT_ON_HELLO, (...args) => $1(...args));"
+      ],
+      "description": "Item Gossip Hello",
+      "scope": "typescript"
+    },
+    "Item Gossip Select": {
+      "prefix": "item_gossip_on_select",
+      "body": [
+        "const $1: gossip_event_on_select = (event: number, player: Player, item: Item, sender: number, intid: number, code: string, menuId?: number): boolean => {",
+        "\t// Implementation",
+        "\treturn true;",
+        "};",
+        "",
+        "// Register Item Gossip Event on Select",
+        "RegisterItemGossipEvent(${2:MyItemEntry}, GossipEvents.GOSSIP_EVENT_ON_SELECT, (...args) => $1(...args));"
+      ],
+      "description": "Item Gossip Select",
+      "scope": "typescript"
+    },
+    "Player Gossip Hello": {
+      "prefix": "player_gossip_on_hello",
+      "body": [
+        "const $1: gossip_event_on_hello = (event: number, player: Player, object: Object): boolean => {",
+        "\t// Implementation",
+        "\treturn true;",
+        "};",
+        "",
+        "// Register Player Gossip Event on Hello",
+        "RegisterPlayerGossipEvent(${2:MyMenuId}, GossipEvents.GOSSIP_EVENT_ON_HELLO, (...args) => $1(...args));"
+      ],
+      "description": "Player Gossip Hello",
+      "scope": "typescript"
+    },
+    "Player Gossip Select": {
+      "prefix": "player_gossip_on_select",
+      "body": [
+        "const $1: gossip_event_on_select = (event: number, player: Player, object: Object, sender: number, intid: number, code: string, menuId?: number): boolean => {",
+        "\t// Implementation",
+        "\treturn true;",
+        "};",
+        "",
+        "// Register Player Gossip Event on Select",
+        "RegisterItemGossipEvent(${2:MyMenuId}, GossipEvents.GOSSIP_EVENT_ON_SELECT, (...args) => $1(...args));"
+      ],
+      "description": "Player Gossip Select",
+      "scope": "typescript"
+    },
+    "GameObject Gossip Hello": {
+      "prefix": "gameobject_gossip_on_hello",
+      "body": [
+        "const $1: gossip_event_on_hello = (event: number, player: Player, gameObject: GameObject): boolean => {",
+        "\t// Implementation",
+        "\treturn true;",
+        "};",
+        "",
+        "// Register GameObject Gossip Event on Hello",
+        "RegisterGameObjectGossipEvent(${2:MyGameObjectEntry}, GossipEvents.GOSSIP_EVENT_ON_HELLO, (...args) => $1(...args));"
+      ],
+      "description": "GameObject Gossip Hello",
+      "scope": "typescript"
+    },
+    "GameObject Gossip Select": {
+      "prefix": "gameobject_gossip_on_select",
+      "body": [
+        "const $1: gossip_event_on_select = (event: number, player: Player, gameObject: GameObject, sender: number, intid: number, code: string, menuId?: number): boolean => {",
+        "\t// Implementation",
+        "\treturn true;",
+        "};",
+        "",
+        "// Register GameObject Gossip Event on Select",
+        "RegisterGameObjectGossipEvent(${2:MyGameObjectEntry}, GossipEvents.GOSSIP_EVENT_ON_SELECT, (...args) => $1(...args));"
+      ],
+      "description": "GameObject Gossip Select",
+      "scope": "typescript"
+    },
+    "Creature Gossip Hello": {
+      "prefix": "creature_gossip_on_hello",
+      "body": [
+        "const $1: gossip_event_on_hello = (event: number, player: Player, creature: Creature): boolean => {",
+        "\t// Implementation",
+        "\treturn true;",
+        "};",
+        "",
+        "// Register Creature Gossip Event on Hello",
+        "RegisterCreatureGossipEvent(${2:MyCreatureEntry}, GossipEvents.GOSSIP_EVENT_ON_HELLO, (...args) => $1(...args));"
+      ],
+      "description": "Creature Gossip Hello",
+      "scope": "typescript"
+    },
+    "Creature Gossip Select": {
+      "prefix": "creature_gossip_on_select",
+      "body": [
+        "const $1: gossip_event_on_select = (event: number, player: Player, creature: Creature, sender: number, intid: number, code: string, menuId?: number): boolean => {",
+        "\t// Implementation",
+        "\treturn true;",
+        "};",
+        "",
+        "// Register Creature Gossip Event on Select",
+        "RegisterCreatureGossipEvent(${2:MyCreatureEntry}, GossipEvents.GOSSIP_EVENT_ON_SELECT, (...args) => $1(...args));"
+      ],
+      "description": "Creature Gossip Select",
+      "scope": "typescript"
+    }    
+  }
+  

@@ -54,6 +54,14 @@ program
     deploy(env); 
   });
 
+program
+  .command("snippets")
+  .requiredOption("-t, --type <type>", "There are two sets of snippets, eluna: server side events and wowapi: used for building UIs for AIO/Addons", 'eluna') 
+  .description("This installs snippets that enable shortcuts to generating code in vscode. The snippets are copied to the current vscode project directory prefixed by type")
+  .action(async ({type}) => {
+    installSnippets(type);
+  });
+
 program.parse(process.argv);
 
 /**
@@ -346,6 +354,31 @@ function buildModules(luaDir, moduleDir, watch, liveReload) {
       log.error(e.message);      
     } 
 
+  }
+
+  /**
+   * This will install snippets into the current project 
+   * @param {string} type - eluna | wowapi 
+   */
+  async function installSnippets(type) {
+    if(type !== 'eluna' && type !== 'wowapi') {
+      log.error("Invalid snippet type. Must be eluna or wowapi");
+      process.exit(1);
+    }
+
+    if(type === 'wowapi') {
+      log.error("wowapi snippets not yet implemented, in development add a comment to existing feature request to raise priority.");
+      process.exit(1);
+    }
+
+    const snippetsFile = path.resolve(__dirname, `../dist/.vscode/${type}.code-snippets`);
+    const vscodeDir = path.resolve(process.cwd(), '.vscode');
+
+    if(!fs.existsSync(vscodeDir)) {
+      fs.mkdirSync(vscodeDir);
+    }
+
+    fs.copyFileSync(snippetsFile, path.resolve(vscodeDir, `${type}.code-snippets`));
   }
 
   /**

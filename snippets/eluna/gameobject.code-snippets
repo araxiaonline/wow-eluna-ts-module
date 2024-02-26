@@ -1,0 +1,176 @@
+{
+    "GameObject AI Update": {
+      "prefix": "gameobject_on_aiupdate",
+      "body": [
+        "const $1: gameobject_event_on_aiupdate = (event: number, gameObject: GameObject, diff: number) => {",
+        "\t// Implementation",
+        "};",
+        "",
+        "// Register GameObject Event on AI Update",
+        "RegisterGameObjectEvent(${2:MyGameObjectID},GameObjectEvents.GAMEOBJECT_EVENT_ON_AIUPDATE, (...args) => $1(...args));"
+      ],
+      "description": "GameObject AI Update",
+      "scope": "typescript"
+    },
+    "GameObject Spawn": {
+      "prefix": "gameobject_on_spawn",
+      "body": [
+        "const $1: gameobject_event_on_spawn = (event: number, gameObject: GameObject) => {",
+        "\t// Implementation",
+        "};",
+        "",
+        "// Register GameObject Event on Spawn",
+        "RegisterGameObjectEvent(${2:MyGameObjectID},GameObjectEvents.GAMEOBJECT_EVENT_ON_SPAWN, (...args) => $1(...args));"
+      ],
+      "description": "GameObject Spawn",
+      "scope": "typescript"
+    },
+    "GameObject Dummy Effect": {
+      "prefix": "gameobject_on_dummy_effect",
+      "body": [
+        "const $1: gameobject_event_on_dummy_effect = (event: number, caster: any, spellId: number, effectIndex: number, gameObject: GameObject): boolean => {",
+        "\t// Implementation",
+        "\treturn false;",
+        "};",
+        "",
+        "// Register GameObject Event on Dummy Effect",
+        "RegisterGameObjectEvent(${2:MyGameObjectID},GameObjectEvents.GAMEOBJECT_EVENT_ON_DUMMY_EFFECT, (...args) => $1(...args));"
+      ],
+      "description": "GameObject Dummy Effect",
+      "scope": "typescript"
+    },
+    "GameObject Quest Accept": {
+      "prefix": "gameobject_on_quest_accept",
+      "body": [
+        "const $1: gameobject_event_on_quest_accept = (event: number, player: Player, gameObject: GameObject, quest: any): boolean => {",
+        "\t// Implementation",
+        "\treturn false;",
+        "};",
+        "",
+        "// Register GameObject Event on Quest Accept",
+        "RegisterGameObjectEvent(${2:MyGameObjectID},GameObjectEvents.GAMEOBJECT_EVENT_ON_QUEST_ACCEPT, (...args) => $1(...args));"
+      ],
+      "description": "GameObject Quest Accept",
+      "scope": "typescript"
+    },
+    "GameObject Quest Reward": {
+      "prefix": "gameobject_on_quest_reward",
+      "body": [
+        "const $1: gameobject_event_on_quest_reward = (event: number, player: Player, gameObject: GameObject, quest: any, option: any): boolean => {",
+        "\t// Implementation",
+        "\treturn false;",
+        "};",
+        "",
+        "// Register GameObject Event on Quest Reward",
+        "RegisterGameObjectEvent(${2:MyGameObjectID},GameObjectEvents.GAMEOBJECT_EVENT_ON_QUEST_REWARD, (...args) => $1(...args));"
+      ],
+      "description": "GameObject Quest Reward",
+      "scope": "typescript"
+    },
+    "GameObject Dialog Status": {
+      "prefix": "gameobject_on_dialog_status",
+      "body": [
+        "const $1: gameobject_event_on_dialog_status = (event: number, player: Player, gameObject: GameObject) => {",
+        "\t// Implementation",
+        "};",
+        "",
+        "// Register GameObject Event on Dialog Status",
+        "RegisterGameObjectEvent(${2:MyGameObjectID},GameObjectEvents.GAMEOBJECT_EVENT_ON_DIALOG_STATUS, (...args) => $1(...args));"
+      ],
+      "description": "GameObject Dialog Status",
+      "scope": "typescript"
+    },
+    "GameObject Destroyed": {
+      "prefix": "gameobject_on_destroyed",
+      "body": [
+        "const $1: gameobject_event_on_destroyed = (event: number, gameObject: GameObject, attacker: any) => {",
+        "\t// Implementation",
+        "};",
+        "",
+        "// Register GameObject Event on Destroyed",
+        "RegisterGameObjectEvent(${2:MyGameObjectID},GameObjectEvents.GAMEOBJECT_EVENT_ON_DESTROYED, (...args) => $1(...args));"
+      ],
+      "description": "GameObject Destroyed",
+      "scope": "typescript"
+    },
+    "GameObject Damaged": {
+      "prefix": "gameobject_on_damaged",
+      "body": [
+        "const $1: gameobject_event_on_damaged = (event: number, gameObject: GameObject, attacker: any) => {",
+        "\t// Implementation",
+        "};",
+        "",
+        "// Register GameObject Event on Damaged",
+        "RegisterGameObjectEvent(${2:MyGameObjectID},GameObjectEvents.GAMEOBJECT_EVENT_ON_DAMAGED, (...args) => $1(...args));"
+      ],
+      "description": "GameObject Damaged",
+      "scope": "typescript"
+    },
+    "GameObject Loot State Change": {
+      "prefix": "gameobject_on_loot_state_change",
+      "body": [
+        "const $1: gameobject_event_on_loot_state_change = (event: number, gameObject: GameObject, state: any) => {",
+        "\t// Implementation",
+        "};",
+        "",
+        "// Register GameObject Event on Loot State Change",
+        "RegisterGameObjectEvent(${2:MyGameObjectID},GameObjectEvents.GAMEOBJECT_EVENT_ON_LOOT_STATE_CHANGE, (...args) => $1(...args));"
+      ],
+      "description": "GameObject Loot State Change",
+      "scope": "typescript"
+    },
+    "GameObject State Changed": {
+      "prefix": "gameobject_on_state_changed",
+      "body": [
+        "const $1: gameobject_event_on_go_state_changed = (event: number, gameObject: GameObject, state: any) => {",
+        "\t// Implementation",
+        "};",
+        "",
+        "// Register GameObject Event on State Changed",
+        "RegisterGameObjectEvent(${2:MyGameObjectID},GameObjectEvents.GAMEOBJECT_EVENT_ON_GO_STATE_CHANGED, (...args) => $1(...args));"
+      ],
+      "description": "GameObject State Changed",
+      "scope": "typescript"
+    },
+    "GameObject Add": {
+      "prefix": "gameobject_on_add",
+      "body": [
+        "const $1: gameobject_event_on_add = (event: number, gameObject: GameObject) => {",
+        "\t// Implementation",
+        "};",
+        "",
+        "// Register GameObject Event on Add",
+        "RegisterGameObjectEvent(${2:MyGameObjectID},GameObjectEvents.GAMEOBJECT_EVENT_ON_ADD, (...args) => $1(...args));"
+      ],
+      "description": "GameObject Add",
+      "scope": "typescript"
+    },
+    "GameObject Remove": {
+      "prefix": "gameobject_on_remove",
+      "body": [
+        "const $1: gameobject_event_on_remove = (event: number, gameObject: GameObject) => {",
+        "\t// Implementation",
+        "};",
+        "",
+        "// Register GameObject Event on Remove",
+        "RegisterGameObjectEvent(${2:MyGameObjectID},GameObjectEvents.GAMEOBJECT_EVENT_ON_REMOVE, (...args) => $1(...args));"
+      ],
+      "description": "GameObject Remove",
+      "scope": "typescript"
+    },
+    "GameObject Use": {
+      "prefix": "gameobject_on_use",
+      "body": [
+        "const $1: gameobject_event_on_use = (event: number, gameObject: GameObject, player: Player): boolean => {",
+        "\t// Implementation",
+        "\treturn false;",
+        "};",
+        "",
+        "// Register GameObject Event on Use",
+        "RegisterGameObjectEvent(${2:MyGameObjectID},GameObjectEvents.GAMEOBJECT_EVENT_ON_USE, (...args) => $1(...args));"
+      ],
+      "description": "GameObject Use",
+      "scope": "typescript"
+    }
+  }
+  
