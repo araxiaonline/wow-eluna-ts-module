@@ -27,8 +27,7 @@
   "exclude": [
     "common/src/declarations",
     "node_modules",
-    "**/node_modules",    
-    "**/*spec.ts",
+    "**/node_modules",        
     "**/__tests__",    
   ],
   "tstl": {
