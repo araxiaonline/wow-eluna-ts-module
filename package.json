@@ -1,10 +1,13 @@
 {
   "name": "wow-eluna-ts-module",
-  "version": "1.9.6",
-  "description": "Eluna-TS Module building package for mod-eluna for AzerothCore",
+  "version": "1.10.0",
+  "description": "ETS Module system for building package for mod-eluna for AzerothCore",
   "author": {
     "name": "@ben-of-codecraft (Volek)",
     "url": "https://github.com/orgs/araxiaonline/repositories"
+  },
+  "bugs": {
+    "url": "https://github.com/araxiaonline/wow-eluna-ts-module/issues"
   },
   "repository": {
     "type": "git",
@@ -29,7 +32,8 @@
     "tsconfig.module.json",
     "tstl.schema.json",
     "modules/**/*",
-    "plugins/**/*"
+    "plugins/**/*",
+    "dist/.vscode/*"
   ],
   "types": "types/index.d.ts",
   "bin": {
@@ -37,10 +41,12 @@
     "eluna-reload": ".bin/send-reload-eluna.sh"
   },
   "scripts": {
+    "prepublishOnly": "node scripts/build-snippets.js",
     "build": "tstl -p tsconfig.build.json"
   },
   "main": "index.ts",
   "devDependencies": {
+    "@types/jest": "^29.5.12",
     "tslint": "^6.1.3",
     "typescript": "^5.2.2"
   },
