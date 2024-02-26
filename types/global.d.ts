@@ -6320,7 +6320,7 @@ declare class WorldObject extends EObject {
      *   
      */
   RegisterEvent(
-    func: <T extends WorldObject>(delay: number | [number, number], repeats: number, worldobj: T) => any,
+    func: <T extends WorldObject>(delay: number | [number, number], repeats: number, worldobj: typeof T) => any,
     delay: number | [number, number],
     repeats?: number,
   ): number;
