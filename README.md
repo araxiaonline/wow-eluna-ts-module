@@ -186,6 +186,17 @@ To save you pain of finding the sharp edges yourself here are the ones I know ab
 * __Time translations__ - no Date Object, it doesnt work.  I have a lib of a few TS translations that will polyfill some of the common needs so you can do things with Game/Server time.  Will move into common libs once I have vetted them out more. 
 
 ## Updates
+**Mar 3, 2024 1.11.0**
+* FEATURE: Added new types from latest methods added to mod-eluna [#13](https://github.com/araxiaonline/wow-eluna-ts-module/issues/13)
+* FEATURE: Added AddLoot which is undocumented on ACore eluna site
+* BUG: Fixed GetPlayersInRange Methods for Creature/GameObject incorrectly returning number instead of Players array
+* FEATURE: ADDED MechanicType, StatType, StatModifyTypes  used in new ImmuneTo and HandlingStatModifier methods 
+
+**Feb 18, 2024 1.10.0**
+* FEATURE: Added NPCBot commands for equipment management 
+* BUG: Fixed more declarations declared returning wrong type
+* FEATURE: Added enums and constants in equipment and stats for NPCBots
+
 **Feb 4, 2024 1.9.0**
 * BUG: Rewrote AIO TSTL Plugin to use transpileFiles from transpileStrings because transpileStrings has an issue that has been submitted. 
 
