@@ -364,6 +364,13 @@ declare type player_event_on_bg_insertion = (
   type: any,
 ) => void;
 
+declare type player_event_on_pet_kill = (
+  event: PlayerEvents.PLAYER_EVENT_ON_PET_KILL,
+  player: Player,
+  killer: Creature,
+) => void;
+
+
 
 /**
  * @noself
@@ -760,5 +767,13 @@ declare function RegisterPlayerEvent(
   this: void,
   event: PlayerEvents.PLAYER_EVENT_ON_BG_INSERTION,
   func: HookFunctionNoSelf<player_event_on_bg_insertion>,
+  shots?: number,
+): (...args: any[]) => any;
+
+
+declare function RegisterPlayerEvent(
+  this: void,
+  event: PlayerEvents.PLAYER_EVENT_ON_PET_KILL,
+  func: HookFunctionNoSelf<player_event_on_pet_kill>,
   shots?: number,
 ): (...args: any[]) => any;

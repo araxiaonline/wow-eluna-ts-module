@@ -488,6 +488,7 @@ declare const enum PlayerEvents {
   PLAYER_EVENT_ON_CAN_GROUP_INVITE = 55, // (event, player, memberName) - Can return false to prevent inviting
   PLAYER_EVENT_ON_GROUP_ROLL_REWARD_ITEM = 56, // (event, player, item, count)
   PLAYER_EVENT_ON_BG_INSERTION = 57, // (event, player, type)
+  PLAYER_EVENT_ON_PET_KILL = 58, // (event, player, killer)
 }
 declare const enum ServerEvents {
   // Server
@@ -1937,6 +1938,15 @@ declare class GameObject extends WorldObject {
   Despawn(): void;
 
   /**
+   * This will add loot to the [GameObject] when it is looted. This is only possible when the 
+   * [GameObject] is a type of [GAMEOBJECT_TYPE_CHEST] 3  and Loot_Template_ID is Set to 0
+   * @param entry item entry 
+   * @param count number of items to add
+   * @param additional. Can add additional items using parameters but has to be entry, count, entry, count, etc.
+   */
+  AddLoot(entry: number, count: number, ...additional: any[]): void;
+
+  /**
      * Returns the guid of the [GameObject] that is used as the ID in the database
      */
   GetDBTableGUIDLow(): number;
@@ -3229,7 +3239,7 @@ declare class EMap {
      * The instance must be scripted using Eluna for this to succeed.
      * If the instance is scripted in C++ this will return `nil`.
      */
-  GetInstanceData(): number;
+  GetInstanceData(): Record<string, any>[];
 
   /**
      * Returns the instance ID of the [Map].
@@ -6068,7 +6078,7 @@ declare class WorldObject extends EObject {
     range?: number,
     entryId?: number,
     hostile?: number,
-  ): number;
+  ): GameObject[];
 
   /**
      * Returns the current instance ID of the [WorldObject]
@@ -6157,7 +6167,7 @@ declare class WorldObject extends EObject {
   /**
      * Returns a table of [Player] objects in sight of the [WorldObject] or within the given range
      */
-  GetPlayersInRange(range?: number, hostile?: number, dead?: number): number;
+  GetPlayersInRange(range?: number, hostile?: number, dead?: number): Player[];
 
   /**
      * Returns the x, y and z of a point dist away from the [WorldObject].
