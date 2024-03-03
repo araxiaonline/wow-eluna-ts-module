@@ -250,6 +250,41 @@ declare const enum WeatherState {
   WEATHER_STATE_BLACKSNOW = 106,
 }
 
+declare const enum MechanicType {
+  MECHANIC_NONE             = 0,
+  MECHANIC_CHARM            = 1,
+  MECHANIC_DISORIENTED      = 2,
+  MECHANIC_DISARM           = 3,
+  MECHANIC_DISTRACT         = 4,
+  MECHANIC_FEAR             = 5,
+  MECHANIC_GRIP             = 6,
+  MECHANIC_ROOT             = 7,
+  MECHANIC_SLOW_ATTACK      = 8,
+  MECHANIC_SILENCE          = 9,
+  MECHANIC_SLEEP            = 10,
+  MECHANIC_SNARE            = 11,
+  MECHANIC_STUN             = 12,
+  MECHANIC_FREEZE           = 13,
+  MECHANIC_KNOCKOUT         = 14,
+  MECHANIC_BLEED            = 15,
+  MECHANIC_BANDAGE          = 16,
+  MECHANIC_POLYMORPH        = 17,
+  MECHANIC_BANISH           = 18,
+  MECHANIC_SHIELD           = 19,
+  MECHANIC_SHACKLE          = 20,
+  MECHANIC_MOUNT            = 21,
+  MECHANIC_INFECTED         = 22,
+  MECHANIC_TURN             = 23,
+  MECHANIC_HORROR           = 24,
+  MECHANIC_INVULNERABILITY  = 25,
+  MECHANIC_INTERRUPT        = 26,
+  MECHANIC_DAZE             = 27,
+  MECHANIC_DISCOVERY        = 28,
+  MECHANIC_IMMUNE_SHIELD    = 29,     // Divine (Blessing) Shield/Protection and Ice Block
+  MECHANIC_SAPPED           = 30,
+  MECHANIC_ENRAGED          = 31  
+}
+
 declare const enum ShutdownExitCode {
   SHUTDOWN_EXIT_CODE = 0,
   ERROR_EXIT_CODE = 1,
@@ -261,7 +296,7 @@ declare const enum ShutdownMask {
   SHUTDOWN_MASK_IDLE = 2,
 }
 
-declare const BotEquipmentSlotMap = {
+declare const BotEquipmentSlotMap: {
   MAINHAND:    0,
   OFFHAND:     1,
   RANGED:      2,
@@ -280,12 +315,12 @@ declare const BotEquipmentSlotMap = {
   TRINKET1:   15,
   TRINKET2:   16,
   NECK:       17,
-} as const;
+}
 
 declare type BotEquipmentSlotName = keyof typeof BotEquipmentSlotMap; 
 declare type BotEquipmentSlotNum = typeof BotEquipmentSlotMap[BotEquipmentSlotName];
 
-declare const BotStatMap = {
+declare const BotStatMap: {
   MANA:                      0,
   HEALTH:                    1,
   AGILITY:                   3,
@@ -341,12 +376,46 @@ declare const BotStatMap = {
   RESIST_ARCANE:            57,
   EXPERTISE:                58,
   MAX_BOT_ITEM_MOD:         59,
-  BOT_STAT_MOD_RESISTANCE_START: 51, // Assuming BOT_STAT_MOD_ARMOR is defined somewhere
-} as const;
+  BOT_STAT_MOD_RESISTANCE_START: 51,
+}
+
+declare const enum StatModType {
+  STRENGTH            = 0,
+  AGILITY             = 1,
+  STAMINA             = 2,
+  INTELLECT           = 3,
+  SPIRIT              = 4,
+  HEALTH              = 5,
+  MANA                = 6,
+  RAGE                = 7,
+  FOCUS               = 8,
+  ENERGY              = 9,
+  HAPPINESS           = 10,
+  RUNE                = 11,
+  RUNIC_POWER         = 12,
+  ARMOR               = 13,
+  RESISTANCE_HOLY     = 14,
+  RESISTANCE_FIRE     = 15,
+  RESISTANCE_NATURE   = 16,
+  RESISTANCE_FROST    = 17,
+  RESISTANCE_SHADOW   = 18,
+  RESISTANCE_ARCANE   = 19,
+  ATTACK_POWER        = 20,
+  ATTACK_POWER_RANGED = 21,
+  DAMAGE_MAINHAND     = 22,
+  DAMAGE_OFFHAND      = 23,
+  DAMAGE_RANGED       = 24,
+}
+
+declare const enum StatModifierType {
+  BASE_VALUE      = 0,
+  BASE_PCT        = 1,
+  TOTAL_VALUE     = 2,
+  TOTAL_PCT       = 3,  
+}
 
 declare type BotStatTypeName = keyof typeof BotStatMap;
-declare type BotStatTypeNum = BotStatMap[BotStatTypeName];
-
+declare type BotStatTypeNum = typeof BotStatMap[BotStatTypeName];
 
 declare type ClassName =
   | "WARRIOR"

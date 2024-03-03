@@ -1,3 +1,5 @@
+import { AssertEntry } from "typescript";
+
 declare type HookFunction = (event:number, ...args: any[]) => any
 
 declare type HookFunctionNoSelf<T extends HookFunction> = T extends (...a: infer U) => infer R ? (this: void, ...a:U) => R: never;
@@ -3767,6 +3769,11 @@ declare class Player extends Unit {
   GetComboTarget(): Unit;
 
   /**
+   * Returns the total number of completed quests
+   */
+  GetCompletedQuestCount(): number;
+
+  /**
      * Returns the [Player]s [Corpse] object
      */
   GetCorpse(): Corpse;
@@ -4188,6 +4195,27 @@ declare class Player extends Unit {
      * Returns 'true' if the [Player] has a title by specific ID, 'false' otherwise.
      */
   HasTitle(titleId: number): boolean;
+
+  /**
+   * The [Player] has a melee talent spec 
+   * @returns boolean 
+   */
+   HasMeleeSpec(): boolean;
+
+   /**
+    * The [Player] has a tank talent spec
+    */
+   HasTankSpec(): boolean;
+
+   /**
+    * The [Player] has a healer talent spec
+    */
+   HasHealSpec(): boolean;
+
+   /**
+    * The [Player] has a caster talent spec
+    */
+   HasCasterSpec(): boolean;
 
   /**
      * Returns 'true' if the [Player] is currently in an arena, 'false' otherwise.
@@ -4928,6 +4956,13 @@ declare class Spell {
   GetPowerCost(): number;
 
   /**
+   * Returns the list of regeant needed to cast the spell. 
+   * The list is an array of objects with the following structure:
+   * @returns { ItemTemplateId: number : Count: number }[]
+   */
+  GetReagentCost(): Record<number, number>[]
+
+  /**
      * Returns the target [Object] of the [Spell].
      * The target can be any of the following [Object] types:
      * - [Player]
@@ -5455,6 +5490,17 @@ declare class Unit extends WorldObject {
      */
   GetVictim(): Unit;
 
+ /**
+  * The [Unit] modifies a specific stat
+  *
+  * @param int32 stat : The stat to modify
+  * @param int8 type : The type of modifier to apply
+  * @param float value : The value to apply to the stat
+  * @param bool apply = false : Whether the modifier should be applied or removed
+  * @return bool : Whether the stat modification was successful
+  */
+  HandleStatModifier(stat: StatModType, type: StatModifierType, value: number, apply?: boolean): boolean;
+
   /**
      * Returns true if the [Unit] has an aura from the given spell entry.
      */
@@ -5848,9 +5894,18 @@ declare class Unit extends WorldObject {
   SetHealth(health: number): void;
 
   /**
+   * Set Immunt To a specific type of damage for the [Unit]
+   * @see MechanicType
+   * @param int32 immunity : new value for the immunity mask
+   * @param bool apply = true : if true, the immunity is applied, otherwise it is removed
+   */
+  SetImmuneTo(immunity: number, apply?: boolean): void;
+
+  /**
      * Sets the [Unit]'s level.
      */
   SetLevel(level: number): void;
+
 
   /**
      * Sets the [Unit]'s max health.
@@ -6329,11 +6384,44 @@ declare class WorldObject extends EObject {
      * }, {1000,10000}, 0);  // do it after 1 to 10 seconds forever 
      *   
      */
-  RegisterEvent(
-    func: <T extends WorldObject>(delay: number | [number, number], repeats: number, worldobj: typeof T) => any,
-    delay: number | [number, number],
-    repeats?: number,
-  ): number;
+   //   RegisterEvent(
+   //     func: <T extends WorldObject>(delay: number | [number, number], repeats: number, worldobj: typeof T) => any,
+   //     delay: number | [number, number],
+   //     repeats?: number,
+   //   ): number;
+   RegisterEvent<T extends WorldObject>(
+      func: (delay: number | [number, number], repeats: number, worldobj: T) => any,
+      delay: number | [number, number],
+      repeats?: number,
+   ): number;
+
+   // Overload for Unit
+   RegisterEvent(
+      func: (delay: number | [number, number], repeats: number, worldobj: Unit) => any,
+      delay: number | [number, number],
+      repeats?: number,
+   ): number;
+
+   // Overload for Creature
+   RegisterEvent(
+      func: (delay: number | [number, number], repeats: number, worldobj: Creature) => any,
+      delay: number | [number, number],
+      repeats?: number,
+   ): number;
+
+   // Overload for Player
+   RegisterEvent(
+      func: (delay: number | [number, number], repeats: number, worldobj: Player) => any,
+      delay: number | [number, number],
+      repeats?: number,
+   ): number;
+
+   // Implementation of the function
+   RegisterEvent(
+      func: (delay: number | [number, number], repeats: number, worldobj: WorldObject | Unit | Creature | Player) => any,
+      delay: number | [number, number],
+      repeats?: number,
+   ): number;
 
   /**
      * Removes the timed event from a [WorldObject] by the specified event ID

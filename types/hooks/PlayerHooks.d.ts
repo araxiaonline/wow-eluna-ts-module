@@ -1,3 +1,5 @@
+/// <reference path="../global.d.ts" />
+
 declare type player_event_on_learn_talents = (
   event: PlayerEvents.PLAYER_EVENT_ON_LEARN_TALENTS,
   pPlayer: Player,

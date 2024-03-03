@@ -1,3 +1,5 @@
+import { Group, GroupEvents } from "../global";
+
 declare type group_event_on_member_add = (
   event: GroupEvents.GROUP_EVENT_ON_MEMBER_ADD,
   group: Group,
@@ -16,6 +18,8 @@ declare type group_event_on_member_remove = (
   guid: number,
   method: number,
 ) => void;
+
+
 
 declare type group_event_on_leader_change = (
   event: GroupEvents.GROUP_EVENT_ON_LEADER_CHANGE,
