@@ -1,5 +1,3 @@
-import { AssertEntry } from "typescript";
-
 declare type HookFunction = (event:number, ...args: any[]) => any
 
 declare type HookFunctionNoSelf<T extends HookFunction> = T extends (...a: infer U) => infer R ? (this: void, ...a:U) => R: never;
