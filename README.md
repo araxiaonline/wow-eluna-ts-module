@@ -239,4 +239,7 @@ To save you pain of finding the sharp edges yourself here are the ones I know ab
 * Fixes some of broken types I have encoutered and updates incorrect comments. 
 * Added hot-reload option to eluna so locally running dev server will automatically reload Eluna on build changes.<br> --- __THIS FEATURE ONLY WORKS ON AZEROTH CORE DOCKER BUILDS__ (I am bias sincerely, the Mgt)
 
-
+** Credits
+- @Yehonal @Helias for original creation and all the types they built out
+- @wartoshika for building out all the types for WoW API
+- @Honey55 for allowing me to post about it in Azeroth Discord Community
